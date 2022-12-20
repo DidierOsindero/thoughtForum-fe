@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 export const NavBar = (): JSX.Element => {
   return (
-    <ul className="navBarListTest">
-      <li className="listItemTest">
-        <Link to="./" className="navBarItemTest">
-          <div className="pageLinkContainer">Home</div>
+    <ul className="navBarList">
+      <li className="navBarListItem">
+        <Link to="./" className="navBarItemLink">
+          <div className="navBarItemText">Home</div>
         </Link>
       </li>
       <li className="dropdown">
-        <Link to="./posts" className="navBarItemTest">
+        <Link to="./posts" className="navBarItemLink">
           <div className="dropbtn">Posts</div>
         </Link>
         <div className="dropdown-content">
@@ -24,14 +24,14 @@ export const NavBar = (): JSX.Element => {
           </Link>
         </div>
       </li>
-      <li className="listItemTest">
-        <Link to="./write" className="navBarItemTest">
-          <div className="pageLinkContainer">Write</div>
+      <li className="navBarListItem">
+        <Link to="./write" className="navBarItemLink">
+          <div className="navBarItemText">Write</div>
         </Link>
       </li>
-      <li className="listItemTest">
-        <Link to="./profile" className="navBarItemTest">
-          <div className="pageLinkContainer">Profile</div>
+      <li className="navBarListItem">
+        <Link to="./profile" className="navBarItemLink">
+          <div className="navBarItemText">Profile</div>
         </Link>
       </li>
     </ul>

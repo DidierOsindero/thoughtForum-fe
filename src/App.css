@@ -13,7 +13,7 @@ TEST===============
   cursor: pointer;
 }
 
-.pageLinkContainer {
+.navBarItemText {
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -21,20 +21,20 @@ TEST===============
   cursor: pointer;
 }
 
-.pageLinkContainer:hover {
+.navBarItemText:hover {
   background-color: rgb(100, 100, 100);
 }
 
-.pageLinkContainer:active {
+.navBarItemText:active {
   background-color: #134074;
 }
 
-.navBarItemTest {
+.navBarItemLink {
   color: white;
   text-decoration: none;
 }
 
-.navBarListTest {
+.navBarList {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -48,7 +48,7 @@ TEST===============
   display: inline-block;
 }
 
-.listItemTest {
+.navBarListItem {
   display: inline-block;
 }
 
@@ -82,64 +82,6 @@ TEST===============
 /*
 HEADER===============
 */
-.navBarList {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  background-color: #333;
-  box-shadow: 5px 5px 15px -1px gray;
-}
-
-.navBarItem {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: background-color 200ms;
-}
-
-.navBarItem:hover {
-  background-color: rgb(100, 100, 100);
-  transition: background-color 0ms;
-}
-
-.navBarItem:active {
-  background-color: #134074;
-}
-
-.dropDown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdownContent {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 10px;
-}
-
-.dropdownContent .dropdownItem {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-radius: 10px;
-}
-
-.dropdownContent .dropdownItem:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdownContent {
-  display: block;
-}
 
 /*
 MAIN_CONTENT===============
