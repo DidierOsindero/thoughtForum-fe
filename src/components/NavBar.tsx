@@ -4,18 +4,14 @@ export const NavBar = (): JSX.Element => {
   return (
     <ul className="navBarListTest">
       <li className="listItemTest">
-        <div className="pageLinkContainer">
-          <Link to="./" className="navBarItemTest">
-            Home
-          </Link>
-        </div>
+        <Link to="./" className="navBarItemTest">
+          <div className="pageLinkContainer">Home</div>
+        </Link>
       </li>
       <li className="dropdown">
-        <div className="dropbtn">
-          <Link to="./posts" className="navBarItemTest">
-            Posts
-          </Link>
-        </div>
+        <Link to="./posts" className="navBarItemTest">
+          <div className="dropbtn">Posts</div>
+        </Link>
         <div className="dropdown-content">
           <Link to="./posts/thought" className="dropdownItem">
             Thought
@@ -29,57 +25,15 @@ export const NavBar = (): JSX.Element => {
         </div>
       </li>
       <li className="listItemTest">
-        <div className="pageLinkContainer">
-          <Link to="./write" className="navBarItemTest">
-            Write
-          </Link>
-        </div>
+        <Link to="./write" className="navBarItemTest">
+          <div className="pageLinkContainer">Write</div>
+        </Link>
       </li>
       <li className="listItemTest">
-        <div className="pageLinkContainer">
-          <Link to="./profile" className="navBarItemTest">
-            Profile
-          </Link>
-        </div>
+        <Link to="./profile" className="navBarItemTest">
+          <div className="pageLinkContainer">Profile</div>
+        </Link>
       </li>
     </ul>
-    // <ul className="navBarList">
-    //   <li>
-    //     <Link to="./" className="navBarItem">
-    //       Home
-    //     </Link>
-    //   </li>
-    //   <div className="dropdown">
-    //     <Link to="./posts" className="navBarItem">
-    //       Posts
-    //     </Link>
-    //     {/* <div className="dropdownContent">
-    //       <Link to="./posts/thought" className="dropdownItem">
-    //         Thought
-    //       </Link>
-    //       <Link to="./posts/science" className="dropdownItem">
-    //         Science
-    //       </Link>
-    //       <Link to="./posts/art" className="dropdownItem">
-    //         Art
-    //       </Link>
-    //     </div> */}
-    //     <div className="dropdownContent">
-    //       <div className="dropdownItem">Flags</div>
-    //       <div className="dropdownItem">Capitals</div>
-    //       <div className="dropdownItem">Population</div>
-    //     </div>
-    //   </div>
-    //   <li>
-    //     <Link to="./write" className="navBarItem">
-    //       Write
-    //     </Link>
-    //   </li>
-    //   <li>
-    //     <Link to="./profile" className="navBarItem">
-    //       Profile
-    //     </Link>
-    //   </li>
-    // </ul>
   );
 };
