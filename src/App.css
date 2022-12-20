@@ -32,10 +32,6 @@ HEADER===============
   background-color: #134074;
 }
 
-.dropdown {
-  position: relative;
-}
-
 .dropdownContent {
   display: none;
   position: absolute;
