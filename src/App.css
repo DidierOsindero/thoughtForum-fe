@@ -1,3 +1,6 @@
+body {
+  margin: 0px;
+}
 /*
 HEADER===============
 */
@@ -7,6 +10,7 @@ HEADER===============
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  box-shadow: 5px 5px 15px -1px gray;
 }
 
 .navBarItem {
@@ -30,3 +34,7 @@ MAIN_CONTENT===============
 /*
 FOOTER===============
 */
+
+.footerContainer {
+  text-align: center;
+}
