@@ -8,11 +8,24 @@ export const NavBar = (): JSX.Element => {
           Home
         </Link>
       </li>
-      <li>
-        <Link to="./posts" className="navBarItem">
-          Posts
-        </Link>
-      </li>
+      <div className="dropdown">
+        <li>
+          <Link to="./posts" className="navBarItem">
+            Posts
+          </Link>
+        </li>
+        <div className="dropdownContent">
+          <Link to="./posts/thought" className="dropdownItem">
+            Thought
+          </Link>
+          <Link to="./posts/science" className="dropdownItem">
+            Science
+          </Link>
+          <Link to="./posts/art" className="dropdownItem">
+            Art
+          </Link>
+        </div>
+      </div>
       <li>
         <Link to="./write" className="navBarItem">
           Write
