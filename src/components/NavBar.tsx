@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 export const NavBar = (): JSX.Element => {
   return (
     <ul className="navBarListTest">
+      <li className="listItemTest">
+        <div className="pageLinkContainer">
+          <Link to="./" className="navBarItemTest">
+            Home
+          </Link>
+        </div>
+      </li>
       <li className="dropdown">
         <div className="dropbtn">
           <Link to="./posts" className="navBarItemTest">
@@ -18,6 +25,20 @@ export const NavBar = (): JSX.Element => {
           </Link>
           <Link to="./posts/art" className="dropdownItem">
             Art
+          </Link>
+        </div>
+      </li>
+      <li className="listItemTest">
+        <div className="pageLinkContainer">
+          <Link to="./write" className="navBarItemTest">
+            Write
+          </Link>
+        </div>
+      </li>
+      <li className="listItemTest">
+        <div className="pageLinkContainer">
+          <Link to="./profile" className="navBarItemTest">
+            Profile
           </Link>
         </div>
       </li>

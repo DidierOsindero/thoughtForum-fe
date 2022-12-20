@@ -6,12 +6,27 @@ body {
 TEST===============
 */
 .dropbtn {
-  background-color: #4caf50;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+}
+
+.pageLinkContainer {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.pageLinkContainer:hover {
+  background-color: rgb(100, 100, 100);
+}
+
+.pageLinkContainer:active {
+  background-color: #134074;
 }
 
 .navBarItemTest {
@@ -25,10 +40,15 @@ TEST===============
   padding: 0;
   background-color: #333;
   box-shadow: 5px 5px 15px -1px gray;
+  flex: left;
 }
 
 .dropdown {
   position: relative;
+  display: inline-block;
+}
+
+.listItemTest {
   display: inline-block;
 }
 
@@ -57,7 +77,7 @@ TEST===============
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: rgb(100, 100, 100);
 }
 /*
 HEADER===============
