@@ -1,6 +1,6 @@
 export const HomePage = (): JSX.Element => {
   return (
-    <div className="mainContentWrapper">
+    <div className="HomePageContainer">
       <p>Home</p>
     </div>
   );
