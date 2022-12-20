@@ -12,7 +12,7 @@ export const NavBar = (): JSX.Element => {
         <Link to="./posts" className="navBarItemLink">
           <div className="dropbtn">Posts</div>
         </Link>
-        <div className="dropdown-content">
+        <div className="dropdownContent">
           <Link to="./posts/thought" className="dropdownItem">
             Thought
           </Link>
