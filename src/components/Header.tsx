@@ -1,7 +1,11 @@
+import { NavBar } from "./NavBar";
+
 export const Header = (): JSX.Element => {
   return (
-    <div className="headerWrapper">
-      <h1>My App</h1>
+    <div className="headerContainer">
+      <div>
+        <NavBar />
+      </div>
     </div>
   );
 };
