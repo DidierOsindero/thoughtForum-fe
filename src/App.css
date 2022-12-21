@@ -121,6 +121,7 @@ MAIN_CONTENT===============
   margin: 20px 40px;
   max-width: 28%;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .featuredPostIMG {
