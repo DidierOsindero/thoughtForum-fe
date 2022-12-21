@@ -134,6 +134,12 @@ HOME_PAGE===============
   max-width: 28%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: 200ms;
+}
+
+.featuredPost:hover {
+  transform: scale(1.0078);
+  box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
 }
 
 .featuredPostIMG {
@@ -151,7 +157,7 @@ WRITE_PAGE===============
 .WritePageContainer {
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 20px;
-  background-color: white;
+
   overflow: hidden;
 }
 
@@ -184,6 +190,8 @@ WRITE_PAGE===============
   height: 300px;
   border-radius: 20px;
   margin: 20px;
+  box-shadow: rgba(0, 0, 0, 0.46) 0px 1px 4px;
+  transition: 200ms;
 }
 
 .createPostContainer {
