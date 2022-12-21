@@ -1,25 +1,44 @@
+import { useEffect, useState } from "react";
+
 export const WritePage = (): JSX.Element => {
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imageURL, setImageURL] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (selectedImage) {
+      setImageURL(URL.createObjectURL(selectedImage));
+    }
+  }, [selectedImage]);
+
   return (
     <div className="WritePageContainer">
       <div className="leftOfPage">
         <div className="createPostContainer">
-          <form>
-            <label className="chooseIMG submitButton" htmlFor="img">
-              Choose an image
-            </label>
-            <input
-              className="createPostInputIMG"
-              type="file"
-              id="img"
-              name="img"
-              accept="image/*"
-            ></input>
-          </form>
-          <img
-            src="https://images.unsplash.com/photo-1553782749-5ab8693a5f4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hha2VzcGVhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt=""
-            className="createPostIMG"
-          />
+          <label className="chooseIMG submitButton" htmlFor="img">
+            Choose an image
+          </label>
+          <input
+            className="createPostInputIMG"
+            type="file"
+            id="img"
+            name="img"
+            accept="image/*"
+            onChange={(e) =>
+              setSelectedImage(e.target.files ? e.target.files[0] : null)
+            }
+          ></input>
+
+          {imageURL && selectedImage && (
+            <>
+              <div>Image Preview:</div>
+              <img
+                className="createPostIMG"
+                src={imageURL}
+                alt={selectedImage.name}
+                height="100px"
+              />
+            </>
+          )}
           <div className="featuredPostTitle">
             <h3>Hubris in Hamlet</h3>
             <form>
