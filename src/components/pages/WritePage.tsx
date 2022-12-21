@@ -12,7 +12,7 @@ export const WritePage = (): JSX.Element => {
 
   return (
     <div className="WritePageContainer">
-      <form>
+      <form onSubmit={() => alert("Post Submitted")}>
         <div className="leftOfPage">
           <div className="createPostContainer">
             <div className="previewImageContainer">
