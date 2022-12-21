@@ -153,6 +153,45 @@ HOME_PAGE===============
 }
 
 /*
+POSTS_PAGE===============
+*/
+
+.postsPageContainer {
+  overflow: hidden;
+}
+
+.postsContainer {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.post {
+  overflow: hidden;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  margin: 20px 40px;
+  max-width: 28%;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: 200ms;
+}
+
+.post:hover {
+  transform: scale(1.0078);
+  box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
+}
+
+.postIMG {
+  height: 300px;
+}
+
+.postContent {
+  text-align: left;
+  padding: 18px;
+}
+/*
 WRITE_PAGE===============
 */
 .WritePageContainer {
