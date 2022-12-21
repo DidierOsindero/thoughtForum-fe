@@ -132,19 +132,18 @@ HOME_PAGE===============
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 20px;
   margin: 20px 40px;
-  max-width: 28%;
+  max-width: 30%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 200ms;
 }
 
 .featuredPost:hover {
-  transform: scale(1.0078);
   box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
 }
 
 .featuredPostIMG {
-  height: 300px;
+  width: 100%;
 }
 
 .featuredPostContent {
@@ -172,19 +171,18 @@ POSTS_PAGE===============
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 20px;
   margin: 20px 40px;
-  max-width: 28%;
+  max-width: 40%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 200ms;
 }
 
 .post:hover {
-  transform: scale(1.0078);
   box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
 }
 
 .postIMG {
-  height: 300px;
+  width: 100%;
 }
 
 .postContent {
