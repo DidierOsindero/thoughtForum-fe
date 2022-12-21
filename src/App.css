@@ -13,6 +13,14 @@ TEST===============
   background-color: #333;
   box-shadow: 5px 5px 15px -1px gray;
   flex: left;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.spaceBelowNavBar {
+  height: 50px;
 }
 
 .navBarListItem {
