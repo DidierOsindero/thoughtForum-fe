@@ -2,13 +2,13 @@ export const HomePage = (): JSX.Element => {
   return (
     <div className="homePageContainer">
       <div className="welcomeMessageContainer">
-        <h2>
+        <h1>
           Welcome to
           {<br />}
           Thought Forum!
           {<br />} {<br />}
           Write down your ideas and share them with others!
-        </h2>
+        </h1>
       </div>
       <div className="featuredPostsContainer">
         <div className="featuredPost">

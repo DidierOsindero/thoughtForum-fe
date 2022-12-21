@@ -3,8 +3,12 @@ body {
   background-color: rgb(252, 252, 252);
 }
 
+input:focus {
+  outline: none;
+}
+
 /*
-HEADER===============
+==========HEADER===============
 */
 
 .navBarList {
@@ -88,7 +92,7 @@ HEADER===============
 }
 
 /*
-MAIN_CONTENT===============
+==================MAIN_CONTENT===============
 */
 
 .mainContentContainer {
@@ -99,6 +103,10 @@ MAIN_CONTENT===============
 .welcomeMessageContainer {
   text-align: center;
 }
+
+/*
+HOME_PAGE===============
+*/
 
 .homePageContainer {
   border: rgba(0, 0, 0, 0.2) 1px solid;
@@ -132,8 +140,45 @@ MAIN_CONTENT===============
   text-align: left;
   padding: 18px;
 }
+
 /*
-FOOTER===============
+WRITE_PAGE===============
+*/
+.WritePageContainer {
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.leftOfPage {
+  float: left;
+  width: 70%;
+}
+
+.rightOfPage {
+  float: right;
+  width: 28%;
+}
+
+.createPostContainer {
+  overflow: hidden;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  margin: 20px 40px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.createPostTextInput {
+  min-height: 200px;
+  width: 80%;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 4px;
+  margin: 15px;
+}
+/*
+==============FOOTER===============
 */
 
 .footerContainer {
