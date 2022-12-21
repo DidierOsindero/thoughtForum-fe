@@ -6,9 +6,9 @@ export const HomePage = (): JSX.Element => {
           Welcome to
           {<br />}
           Thought Forum!
-          {<br />} {<br />}
-          Write down your ideas and share them with others!
+          {<br />}{" "}
         </h1>
+        <h3>Write down your ideas and share them with others!</h3>
       </div>
       <div className="featuredPostsContainer">
         <div className="featuredPost">
