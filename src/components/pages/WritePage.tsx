@@ -64,15 +64,43 @@ export const WritePage = (): JSX.Element => {
                 setSelectedImage(e.target.files ? e.target.files[0] : null)
               }
             ></input>
-            <br />
-            <input type="radio" name="postTypeRadio" value="thought" required />
-            <label htmlFor="postTypeRadio">Thought</label>
-            <br />
-            <input type="radio" name="postTypeRadio" value="science" />
-            <label htmlFor="postTypeRadio"> Science</label>
-            <br />
-            <input type="radio" name="postTypeRadio" value="art" />
-            <label htmlFor="postTypeRadio"> Art</label>
+
+            <div className="postTypeRadioContainer">
+              <p>
+                <b>Type:</b>
+              </p>
+
+              <input
+                type="radio"
+                name="postTypeRadio"
+                value="thought"
+                required
+              />
+              <label htmlFor="postTypeRadio">Thought</label>
+              <br />
+              <input type="radio" name="postTypeRadio" value="science" />
+              <label htmlFor="postTypeRadio"> Science</label>
+              <br />
+              <input type="radio" name="postTypeRadio" value="art" />
+              <label htmlFor="postTypeRadio"> Art</label>
+            </div>
+
+            <div className="postTypeRadioContainer">
+              <p>
+                <b>Privacy:</b>
+              </p>
+
+              <input
+                type="radio"
+                name="postPrivacyRadio"
+                value="public"
+                required
+              />
+              <label htmlFor="postPrivacyRadio">Public</label>
+              <br />
+              <input type="radio" name="postPrivacyRadio" value="private" />
+              <label htmlFor="postPrivacyRadio"> Private</label>
+            </div>
             <br />
             <div>
               <input className="submitButton" type="submit" value="✅ Post" />
