@@ -34,6 +34,9 @@ export const NavBar = (): JSX.Element => {
           <div className="navBarItemText">Profile</div>
         </Link>
       </li>
+      <li className="navBarListItemRight">
+        <div className="navBarItemText">Sign-In</div>
+      </li>
     </ul>
   );
 };

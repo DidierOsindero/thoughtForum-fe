@@ -5,38 +5,6 @@ body {
 /*
 TEST===============
 */
-.dropbtn {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.navBarItemText {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.navBarItemText:hover {
-  background-color: rgb(100, 100, 100);
-}
-
-.navBarItemText:active {
-  background-color: #134074;
-}
-
-.dropdown:hover .dropbtn:active {
-  background-color: #134074;
-}
-
-.navBarItemLink {
-  color: white;
-  text-decoration: none;
-}
 
 .navBarList {
   list-style: none;
@@ -47,12 +15,47 @@ TEST===============
   flex: left;
 }
 
-.dropdown {
-  position: relative;
+.navBarListItem {
   display: inline-block;
 }
 
-.navBarListItem {
+.navBarListItemRight {
+  float: right;
+}
+
+.navBarItemText {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.navBarItemText:hover,
+.dropdown:hover .dropbtn {
+  background-color: rgb(100, 100, 100);
+}
+
+.navBarItemText:active,
+.dropdown:hover .dropbtn:active {
+  background-color: #134074;
+}
+
+.navBarItemLink {
+  color: white;
+  text-decoration: none;
+}
+
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
   display: inline-block;
 }
 
@@ -80,9 +83,6 @@ TEST===============
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  background-color: rgb(100, 100, 100);
-}
 /*
 HEADER===============
 */
