@@ -227,6 +227,15 @@ WRITE_PAGE===============
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 6px;
   transform: scale(1.04);
 }
+
+.createPostSettingsContainer {
+  overflow: hidden;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  margin: 20px 40px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
 /*
 ==============FOOTER===============
 */
