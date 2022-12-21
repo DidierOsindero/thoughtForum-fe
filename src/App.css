@@ -165,6 +165,27 @@ WRITE_PAGE===============
   width: 28%;
 }
 
+.createPostInputIMG {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.chooseIMG {
+  margin-top: 10px;
+  color: black;
+  display: inline-block;
+}
+
+.createPostIMG {
+  height: 300px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
 .createPostContainer {
   overflow: hidden;
   border: rgba(0, 0, 0, 0.2) 1px solid;
@@ -183,7 +204,7 @@ WRITE_PAGE===============
   padding: 5px 10px;
 }
 
-.submitCreatedPost {
+.submitButton {
   margin: 10px;
   background-color: inherit;
   border: solid 1px rgba(80, 80, 80, 0.5);
@@ -192,7 +213,7 @@ WRITE_PAGE===============
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.submitCreatedPost:hover {
+.submitButton:hover {
   background-color: inherit;
   border: solid 1px rgba(80, 80, 80, 0.9);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 6px;
