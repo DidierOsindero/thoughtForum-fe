@@ -9,7 +9,7 @@ import { SciencePage } from "./pages/posts-pages/SciencePage";
 
 export const MainContent = (): JSX.Element => {
   return (
-    <div className="mainContentWrapper">
+    <div className="mainContentContainer">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/posts">

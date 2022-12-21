@@ -1,9 +1,10 @@
 body {
   margin: 0px;
+  background-color: rgb(252, 252, 252);
 }
 
 /*
-TEST===============
+HEADER===============
 */
 
 .navBarList {
@@ -15,12 +16,7 @@ TEST===============
   flex: left;
   position: fixed;
   top: 0;
-  right: 0;
-  left: 0;
-}
-
-.spaceBelowNavBar {
-  height: 50px;
+  width: 100%;
 }
 
 .navBarListItem {
@@ -92,13 +88,49 @@ TEST===============
 }
 
 /*
-HEADER===============
-*/
-
-/*
 MAIN_CONTENT===============
 */
 
+.mainContentContainer {
+  padding: 15px;
+  margin-top: 60px;
+}
+
+.welcomeMessageContainer {
+  text-align: center;
+}
+
+.homePageContainer {
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.featuredPostsContainer {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.featuredPost {
+  overflow: hidden;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  margin: 20px 40px;
+  max-width: 28%;
+  text-align: center;
+}
+
+.featuredPostIMG {
+  height: 300px;
+}
+
+.featuredPostContent {
+  text-align: left;
+  padding: 18px;
+}
 /*
 FOOTER===============
 */
