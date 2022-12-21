@@ -14,8 +14,31 @@ export const WritePage = (): JSX.Element => {
     <div className="WritePageContainer">
       <div className="leftOfPage">
         <div className="createPostContainer">
+          <div className="previewImageContainer">
+            {imageURL && selectedImage && (
+              <>
+                <img
+                  className="createPostIMG"
+                  src={imageURL}
+                  alt={selectedImage.name}
+                  height="100px"
+                />
+              </>
+            )}
+            {!(imageURL && selectedImage) && (
+              <>
+                <img
+                  className="createPostIMG"
+                  src="https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                  alt=""
+                  height="100px"
+                />
+              </>
+            )}
+          </div>
           <label className="chooseIMG submitButton" htmlFor="img">
-            Choose an image
+            {imageURL && selectedImage && <span>Change image</span>}
+            {!(imageURL && selectedImage) && <span>Choose an image</span>}
           </label>
           <input
             className="createPostInputIMG"
@@ -27,18 +50,6 @@ export const WritePage = (): JSX.Element => {
               setSelectedImage(e.target.files ? e.target.files[0] : null)
             }
           ></input>
-
-          {imageURL && selectedImage && (
-            <>
-              <div>Image Preview:</div>
-              <img
-                className="createPostIMG"
-                src={imageURL}
-                alt={selectedImage.name}
-                height="100px"
-              />
-            </>
-          )}
           <div className="featuredPostTitle">
             <h3>Hubris in Hamlet</h3>
             <form>
