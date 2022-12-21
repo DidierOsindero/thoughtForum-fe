@@ -38,11 +38,16 @@ export const WritePage = (): JSX.Element => {
               )}
             </div>
             <div className="featuredPostTitle">
-              <h3>Hubris in Hamlet</h3>
-
+              <textarea
+                className="createPostTitleInput"
+                placeholder="Write title here..."
+                required
+                maxLength={50}
+              ></textarea>
+              <br />
               <textarea
                 className="createPostTextInput"
-                placeholder="Write here..."
+                placeholder="Write post content here..."
                 required
               ></textarea>
             </div>

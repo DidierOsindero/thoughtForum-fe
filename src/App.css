@@ -117,6 +117,7 @@ HOME_PAGE===============
   border-radius: 20px;
   background-color: white;
   overflow: hidden;
+  margin: auto 2%;
 }
 
 .featuredPostsContainer {
@@ -205,6 +206,17 @@ WRITE_PAGE===============
 .createPostContainer,
 .createPostSettingsContainer {
   background-color: white;
+}
+
+.createPostTitleInput {
+  width: 30%;
+  height: 1rem;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px 10px;
+  text-align: center;
+  text-align: center;
 }
 
 .createPostTextInput {
