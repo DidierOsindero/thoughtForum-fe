@@ -155,20 +155,19 @@ HOME_PAGE===============
 WRITE_PAGE===============
 */
 .WritePageContainer {
-  border: rgba(0, 0, 0, 0.2) 1px solid;
-  border-radius: 20px;
-
   overflow: hidden;
 }
 
 .leftOfPage {
   float: left;
   width: 70%;
+  background-color: transparent;
 }
 
 .rightOfPage {
   float: right;
   width: 28%;
+  background-color: transparent;
 }
 
 .createPostInputIMG {
@@ -201,6 +200,11 @@ WRITE_PAGE===============
   margin: 20px 40px;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.createPostContainer,
+.createPostSettingsContainer {
+  background-color: white;
 }
 
 .createPostTextInput {
