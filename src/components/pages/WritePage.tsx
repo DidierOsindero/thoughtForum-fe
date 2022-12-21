@@ -10,14 +10,23 @@ export const WritePage = (): JSX.Element => {
           />
           <div className="featuredPostTitle">
             <h3>Hubris in Hamlet</h3>
-            <input
-              className="createPostTextInput"
-              placeholder="Write here..."
-            ></input>
+            <form>
+              <textarea
+                className="createPostTextInput"
+                placeholder="Write here..."
+                required
+              ></textarea>
+              <br />
+              <input
+                className="submitCreatedPost"
+                type="submit"
+                value="✅ Post"
+              />
+            </form>
           </div>
         </div>
       </div>
-      <div className="rightOfPage"></div>
+      <div className="rightOfPage"> </div>
     </div>
   );
 };
