@@ -1,15 +1,19 @@
 import { dummyData } from "../../utils/dummyPostData";
+import { dummyUserData } from "../../utils/dummyUserData";
 import { MyPostsListView } from "../templates/MyPostsListView";
-const dummyUserID = "1";
-const dummyUserName = "Kawasi James";
+const currentUser = dummyUserData[2];
 
 export const ProfilePage = (): JSX.Element => {
   return (
     <div className="ProfilePageContainer">
-      <h2 style={{ textAlign: "center" }}>{dummyUserName}</h2>
+      <h2 style={{ textAlign: "center" }}>
+        {currentUser.firstname} {currentUser.lastname}
+      </h2>
       <div className="leftOfPage">
         <MyPostsListView
-          postDataArray={dummyData.filter((el) => el.userid === dummyUserID)}
+          postDataArray={dummyData.filter(
+            (el) => el.userid === currentUser.userid
+          )}
         />
       </div>
 
