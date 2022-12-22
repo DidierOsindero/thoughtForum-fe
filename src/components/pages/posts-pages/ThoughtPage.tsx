@@ -1,7 +1,14 @@
+import { useRef } from "react";
+import { dummyData } from "../../../utils/dummyPostData";
+import { PostsListView } from "../../templates/PostsListView";
+
 export const ThoughtPage = (): JSX.Element => {
+  const thoughtDummyDatauseRef = useRef(
+    dummyData.filter((el) => el.type === "thought")
+  );
   return (
-    <div className="PostsPageContainer">
-      <p>Thought Posts</p>
+    <div className="postsPageContainer">
+      <PostsListView postDataArray={thoughtDummyDatauseRef.current} />
     </div>
   );
 };
