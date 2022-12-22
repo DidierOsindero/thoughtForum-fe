@@ -7,8 +7,8 @@ type PostType = "thought" | "science" | "art";
 type PostPrivacy = "public" | "private";
 
 export interface IPostData {
-  userID: string;
-  postID: string;
+  userid: string;
+  postid: string;
   img: string;
   title: string;
   content: string;
@@ -16,6 +16,12 @@ export interface IPostData {
   privacy: PostPrivacy;
   hearts: number;
   date: string;
+}
+
+export interface IUserData {
+  userid: string;
+  firstname: string;
+  lastname: string;
 }
 
 function App(): JSX.Element {
