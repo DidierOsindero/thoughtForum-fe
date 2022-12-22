@@ -3,8 +3,8 @@ import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { Footer } from "./components/Footer";
 
-type PostType = "thought" | "science" | "art";
-type PostPrivacy = "public" | "private";
+export type PostType = "thought" | "science" | "art";
+export type PostPrivacy = "public" | "private";
 export interface IPostData {
   user_id: string;
   post_id: string;

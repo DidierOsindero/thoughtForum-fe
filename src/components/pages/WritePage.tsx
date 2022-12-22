@@ -1,10 +1,26 @@
 import { useEffect, useState } from "react";
+import { PostType, PostPrivacy } from "../../App";
+
+interface newPostData {
+  img: string | null;
+  title: string;
+  content: string;
+  type: PostType | null;
+  privacy: PostPrivacy | null;
+  hearts: number | null;
+}
 
 export const WritePage = (): JSX.Element => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | null>(null);
-  const [postContentText, setPostContentText] = useState<string>("");
-  const [postTitleText, setPostTitleText] = useState<string>("");
+  const [newPostData, setNewPostData] = useState<newPostData>({
+    img: null,
+    title: "",
+    content: "",
+    type: null,
+    privacy: null,
+    hearts: null,
+  });
 
   useEffect(() => {
     if (selectedImage) {
@@ -12,6 +28,7 @@ export const WritePage = (): JSX.Element => {
     }
   }, [selectedImage]);
 
+  console.log(newPostData);
   return (
     <div className="WritePageContainer">
       <form onSubmit={() => alert("Post Submitted")}>
@@ -41,8 +58,10 @@ export const WritePage = (): JSX.Element => {
             </div>
             <div className="featuredPostTitle">
               <textarea
-                value={postTitleText}
-                onChange={(e) => setPostTitleText(e.target.value)}
+                value={newPostData.title}
+                onChange={(e) =>
+                  setNewPostData({ ...newPostData, title: e.target.value })
+                }
                 className="createPostTitleInput"
                 placeholder="Write title here..."
                 required
@@ -50,8 +69,10 @@ export const WritePage = (): JSX.Element => {
               ></textarea>
               <br />
               <textarea
-                value={postContentText}
-                onChange={(e) => setPostContentText(e.target.value)}
+                value={newPostData.content}
+                onChange={(e) =>
+                  setNewPostData({ ...newPostData, content: e.target.value })
+                }
                 className="createPostTextInput"
                 placeholder="Write post content here..."
                 required
