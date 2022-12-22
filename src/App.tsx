@@ -3,14 +3,17 @@ import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { Footer } from "./components/Footer";
 
+type PostType = "thought" | "science" | "art";
+type PostPrivacy = "public" | "private";
+
 export interface IPostData {
   userID: string;
   postID: string;
   img: string;
   title: string;
   content: string;
-  type: string;
-  privacy: string;
+  type: PostType;
+  privacy: PostPrivacy;
   hearts: number;
   date: string;
 }

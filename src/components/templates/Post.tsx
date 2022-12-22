@@ -4,7 +4,7 @@ export interface IPostProps {
   postData: IPostData;
 }
 
-export function Post({ postData }: IPostProps) {
+export function Post({ postData }: IPostProps): JSX.Element {
   return (
     <div className="post">
       <img src={postData.img} alt="" className="postIMG" />

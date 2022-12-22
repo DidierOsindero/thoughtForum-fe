@@ -4,11 +4,13 @@ export interface IPostsListViewProps {
   postDataArray: IPostData[];
 }
 
-export function PostsListView({ postDataArray }: IPostsListViewProps) {
+export function PostsListView({
+  postDataArray,
+}: IPostsListViewProps): JSX.Element {
   return (
     <div className="postsContainer">
       {postDataArray.map((postData) => {
-        return <Post postData={postData} />;
+        return <Post postData={postData} key={postData.postID} />;
       })}
     </div>
   );
