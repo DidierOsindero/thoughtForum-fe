@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
 import { PostType, PostPrivacy } from "../../App";
 
-interface newPostData {
+interface INewPostData {
   img: string | null;
   title: string;
   content: string;
   type: PostType | null;
   privacy: PostPrivacy | null;
-  hearts: number | null;
 }
 
 export const WritePage = (): JSX.Element => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | null>(null);
-  const [newPostData, setNewPostData] = useState<newPostData>({
+  const [newPostData, setNewPostData] = useState<INewPostData>({
     img: null,
     title: "",
     content: "",
     type: null,
     privacy: null,
-    hearts: null,
   });
 
   useEffect(() => {
@@ -27,6 +25,24 @@ export const WritePage = (): JSX.Element => {
       setImageURL(URL.createObjectURL(selectedImage));
     }
   }, [selectedImage]);
+
+  useEffect(() => {
+    setNewPostData((prev) => {
+      return { ...prev, img: imageURL };
+    });
+  }, [imageURL]);
+
+  const handlePostType = (chosenType: PostType) => {
+    setNewPostData((prev) => {
+      return { ...prev, type: chosenType };
+    });
+  };
+
+  const handlePrivacyChoice = (chosenPrivacySetting: PostPrivacy) => {
+    setNewPostData((prev) => {
+      return { ...prev, privacy: chosenPrivacySetting };
+    });
+  };
 
   console.log(newPostData);
   return (
@@ -107,13 +123,24 @@ export const WritePage = (): JSX.Element => {
                 name="postTypeRadio"
                 value="thought"
                 required
+                onChange={(e) => handlePostType(e.target.value as PostType)}
               />
               <label htmlFor="postTypeRadio">Thought</label>
               <br />
-              <input type="radio" name="postTypeRadio" value="science" />
+              <input
+                type="radio"
+                name="postTypeRadio"
+                value="science"
+                onChange={(e) => handlePostType(e.target.value as PostType)}
+              />
               <label htmlFor="postTypeRadio"> Science</label>
               <br />
-              <input type="radio" name="postTypeRadio" value="art" />
+              <input
+                type="radio"
+                name="postTypeRadio"
+                value="art"
+                onChange={(e) => handlePostType(e.target.value as PostType)}
+              />
               <label htmlFor="postTypeRadio"> Art</label>
             </div>
 
@@ -127,10 +154,20 @@ export const WritePage = (): JSX.Element => {
                 name="postPrivacyRadio"
                 value="public"
                 required
+                onChange={(e) =>
+                  handlePrivacyChoice(e.target.value as PostPrivacy)
+                }
               />
               <label htmlFor="postPrivacyRadio">Public</label>
               <br />
-              <input type="radio" name="postPrivacyRadio" value="private" />
+              <input
+                type="radio"
+                name="postPrivacyRadio"
+                value="private"
+                onChange={(e) =>
+                  handlePrivacyChoice(e.target.value as PostPrivacy)
+                }
+              />
               <label htmlFor="postPrivacyRadio"> Private</label>
             </div>
             <br />
