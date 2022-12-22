@@ -24,7 +24,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
       </div>
       <p className="postContent">{postData.content}</p>
       <p className="postDate">
-        <i>{postData.date}</i>
+        <i>{postData.creation_date}</i>
       </p>
     </div>
   );

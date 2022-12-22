@@ -14,7 +14,7 @@ export interface IPostData {
   type: PostType;
   privacy: PostPrivacy;
   hearts: number;
-  date: string;
+  creation_date: string;
 }
 
 export interface IUserData {

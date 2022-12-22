@@ -9,7 +9,7 @@ export function MyPost({ postData }: IMyPostProps): JSX.Element {
     <div className="post">
       <img src={postData.img} alt="" className="postIMG" />
       <p className="postDate">
-        <i>{postData.date}</i>
+        <i>{postData.creation_date}</i>
       </p>
       <div className="postTitle">
         <h3>{postData.title}</h3>
