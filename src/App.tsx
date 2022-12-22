@@ -19,8 +19,8 @@ export interface IPostData {
 
 export interface IUserData {
   userid: string;
-  firstname: string;
-  lastname: string;
+  first_name: string;
+  last_name: string;
 }
 
 function App(): JSX.Element {

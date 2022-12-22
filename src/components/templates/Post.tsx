@@ -15,7 +15,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
       <div className="postDetails">
         <p className="postUserName">
           <i>
-            {creatorOfPost?.firstname} {creatorOfPost?.lastname}
+            {creatorOfPost?.first_name} {creatorOfPost?.last_name}
           </i>
         </p>
       </div>

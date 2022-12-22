@@ -7,7 +7,7 @@ export const ProfilePage = (): JSX.Element => {
   return (
     <div className="ProfilePageContainer">
       <h2 style={{ textAlign: "center" }}>
-        {currentUser.firstname} {currentUser.lastname}
+        {currentUser.first_name} {currentUser.last_name}
       </h2>
       <div className="leftOfPage">
         <MyPostsListView
