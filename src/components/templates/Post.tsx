@@ -15,8 +15,8 @@ export function Post({ postData }: IPostProps): JSX.Element {
       </div>
       <div className="postTitle">
         <h3>{postData.title}</h3>
-        <p className="postContent">{postData.content}</p>
       </div>
+      <p className="postContent">{postData.content}</p>
       <p className="postDate">
         <i>{postData.date}</i>
       </p>
