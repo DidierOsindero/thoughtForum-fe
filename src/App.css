@@ -26,6 +26,7 @@ button:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 6px;
   transform: scale(1.04);
 }
+
 /*
 ==========HEADER===============
 */
@@ -304,6 +305,9 @@ WRITE_PAGE===============
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+/*
+PROFILE_PAGE===============
+*/
 
 /*
 ==============FOOTER===============
@@ -312,4 +316,16 @@ WRITE_PAGE===============
 .footerContainer {
   text-align: center;
   clear: left;
+}
+
+/*
+==============TEMPLATES===============
+*/
+/*
+POST===============
+*/
+.postDate {
+  margin: 10px 5%;
+  text-align: right;
+  font-size: 0.9rem;
 }
