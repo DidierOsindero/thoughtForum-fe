@@ -311,4 +311,5 @@ WRITE_PAGE===============
 
 .footerContainer {
   text-align: center;
+  clear: left;
 }
