@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export const WritePage = (): JSX.Element => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | null>(null);
+  const [postContentText, setPostContentText] = useState<string>("");
+  const [postTitleText, setPostTitleText] = useState<string>("");
 
   useEffect(() => {
     if (selectedImage) {
@@ -39,6 +41,8 @@ export const WritePage = (): JSX.Element => {
             </div>
             <div className="featuredPostTitle">
               <textarea
+                value={postTitleText}
+                onChange={(e) => setPostTitleText(e.target.value)}
                 className="createPostTitleInput"
                 placeholder="Write title here..."
                 required
@@ -46,6 +50,8 @@ export const WritePage = (): JSX.Element => {
               ></textarea>
               <br />
               <textarea
+                value={postContentText}
+                onChange={(e) => setPostContentText(e.target.value)}
                 className="createPostTextInput"
                 placeholder="Write post content here..."
                 required
