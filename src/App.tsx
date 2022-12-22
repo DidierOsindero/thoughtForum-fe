@@ -5,10 +5,9 @@ import { Footer } from "./components/Footer";
 
 type PostType = "thought" | "science" | "art";
 type PostPrivacy = "public" | "private";
-
 export interface IPostData {
-  userid: string;
-  postid: string;
+  user_id: string;
+  post_id: string;
   img: string;
   title: string;
   content: string;

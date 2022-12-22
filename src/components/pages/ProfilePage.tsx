@@ -1,7 +1,7 @@
 import { dummyData } from "../../utils/dummyPostData";
 import { dummyUserData } from "../../utils/dummyUserData";
 import { MyPostsListView } from "../templates/MyPostsListView";
-const currentUser = dummyUserData[2];
+const currentUser = dummyUserData[0];
 
 export const ProfilePage = (): JSX.Element => {
   return (
@@ -12,7 +12,7 @@ export const ProfilePage = (): JSX.Element => {
       <div className="leftOfPage">
         <MyPostsListView
           postDataArray={dummyData.filter(
-            (el) => el.userid === currentUser.userid
+            (el) => el.user_id === currentUser.userid
           )}
         />
       </div>

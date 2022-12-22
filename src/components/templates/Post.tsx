@@ -7,7 +7,7 @@ export interface IPostProps {
 
 export function Post({ postData }: IPostProps): JSX.Element {
   const creatorOfPost = dummyUserData.find(
-    (user) => postData.userid === user.userid
+    (user) => postData.user_id === user.userid
   );
   return (
     <div className="post">
