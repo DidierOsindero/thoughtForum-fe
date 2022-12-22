@@ -10,7 +10,7 @@ export function MyPostsListView({
   return (
     <div className="postsContainer">
       {postDataArray.map((postData) => {
-        return <MyPost postData={postData} key={postData.postID} />;
+        return <MyPost postData={postData} key={postData.postid} />;
       })}
     </div>
   );

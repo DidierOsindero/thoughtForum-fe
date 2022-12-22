@@ -9,7 +9,7 @@ export const ProfilePage = (): JSX.Element => {
       <h2 style={{ textAlign: "center" }}>{dummyUserName}</h2>
       <div className="leftOfPage">
         <MyPostsListView
-          postDataArray={dummyData.filter((el) => el.userID === dummyUserID)}
+          postDataArray={dummyData.filter((el) => el.userid === dummyUserID)}
         />
       </div>
 
