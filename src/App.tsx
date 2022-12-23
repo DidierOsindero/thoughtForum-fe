@@ -7,7 +7,7 @@ export type PostType = "thought" | "science" | "art";
 export type PostPrivacy = "public" | "private";
 export interface IPostData {
   user_id: string;
-  post_id: string;
+  post_id: number;
   img: string;
   title: string;
   content: string;
@@ -22,6 +22,8 @@ export interface IUserData {
   first_name: string;
   last_name: string;
 }
+
+export const BASE_URL = "http://localhost:5002/";
 
 function App(): JSX.Element {
   return (
