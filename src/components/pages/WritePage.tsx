@@ -6,7 +6,7 @@ interface INewPostData {
   img: string | null;
   title: string;
   content: string;
-  type: PostType | null;
+  category: PostType | null;
   privacy: PostPrivacy | null;
 }
 
@@ -17,7 +17,7 @@ export const WritePage = (): JSX.Element => {
     img: null,
     title: "",
     content: "",
-    type: null,
+    category: null,
     privacy: null,
   });
 
@@ -35,7 +35,7 @@ export const WritePage = (): JSX.Element => {
 
   const handlePostType = (chosenType: PostType) => {
     setNewPostData((prev) => {
-      return { ...prev, type: chosenType };
+      return { ...prev, category: chosenType };
     });
   };
 
@@ -45,9 +45,11 @@ export const WritePage = (): JSX.Element => {
     });
   };
 
-  const handleSubmitPost = async () => {
+  const handleSubmitPost = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("FORM SUBMITTED");
     const config = { headers: { Authorization: "The Authorised Guy" } };
-    const reponse = await axios.post(BASE_URL + "/write", newPostData, config);
+    const reponse = await axios.post(BASE_URL + "write", newPostData, config);
     const createdPost = reponse.data;
     console.log("Created Post", createdPost);
   };
@@ -55,7 +57,7 @@ export const WritePage = (): JSX.Element => {
   console.log(newPostData);
   return (
     <div className="WritePageContainer">
-      <form onSubmit={handleSubmitPost}>
+      <form onSubmit={(e) => handleSubmitPost(e)}>
         <div className="leftOfPage">
           <div className="createPostContainer">
             <div className="previewImageContainer">
