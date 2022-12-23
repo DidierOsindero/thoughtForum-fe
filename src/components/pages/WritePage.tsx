@@ -1,5 +1,6 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { PostType, PostPrivacy } from "../../App";
+import { PostType, PostPrivacy, BASE_URL } from "../../App";
 
 interface INewPostData {
   img: string | null;
@@ -44,10 +45,17 @@ export const WritePage = (): JSX.Element => {
     });
   };
 
+  const handleSubmitPost = async () => {
+    const config = { headers: { Authorization: "The Authorised Guy" } };
+    const reponse = await axios.post(BASE_URL + "/write", newPostData, config);
+    const createdPost = reponse.data;
+    console.log("Created Post", createdPost);
+  };
+
   console.log(newPostData);
   return (
     <div className="WritePageContainer">
-      <form onSubmit={() => alert("Post Submitted")}>
+      <form onSubmit={handleSubmitPost}>
         <div className="leftOfPage">
           <div className="createPostContainer">
             <div className="previewImageContainer">

@@ -4,7 +4,7 @@ import { PostsListView } from "../../templates/PostsListView";
 
 export const ArtPage = (): JSX.Element => {
   const artDummyDatauseRef = useRef(
-    dummyData.filter((el) => el.type === "art")
+    dummyData.filter((el) => el.category === "art")
   );
   return (
     <div className="postsPageContainer">

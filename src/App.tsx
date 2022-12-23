@@ -11,7 +11,7 @@ export interface IPostData {
   img: string;
   title: string;
   content: string;
-  type: PostType;
+  category: PostType;
   privacy: PostPrivacy;
   hearts: number;
   creation_date: string;

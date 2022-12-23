@@ -4,7 +4,7 @@ import { PostsListView } from "../../templates/PostsListView";
 
 export const SciencePage = (): JSX.Element => {
   const scienceDummyDatauseRef = useRef(
-    dummyData.filter((el) => el.type === "science")
+    dummyData.filter((el) => el.category === "science")
   );
   return (
     <div className="postsPageContainer">
