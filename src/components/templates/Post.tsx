@@ -9,6 +9,9 @@ export function Post({ postData }: IPostProps): JSX.Element {
   const creatorOfPost = dummyUserData.find(
     (user) => postData.user_id === user.userid
   );
+
+  const indexOfT = postData.creation_date.indexOf("T");
+  const postDate = postData.creation_date.slice(0, indexOfT);
   return (
     <div className="post">
       <img src={postData.img} alt="" className="postIMG" />
@@ -24,7 +27,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
       </div>
       <p className="postContent">{postData.content}</p>
       <p className="postDate">
-        <i>{postData.creation_date}</i>
+        <i>{postDate}</i>
       </p>
     </div>
   );
