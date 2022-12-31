@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { auth, googleAuthProvider } from "../configureFirebase";
+import { signInWithPopup } from "firebase/auth";
 
 export const NavBar = (): JSX.Element => {
+  const handSignInClicked = async () => {
+    console.log("Signing In User");
+    const userCredential = await signInWithPopup(auth, googleAuthProvider);
+    console.log(userCredential);
+  };
   return (
     <>
       <ul className="navBarList">
@@ -36,7 +43,9 @@ export const NavBar = (): JSX.Element => {
           </Link>
         </li>
         <li className="navBarListItemRight">
-          <div className="navBarItemText">Sign-In</div>
+          <div className="navBarItemText" onClick={handSignInClicked}>
+            Sign-In
+          </div>
         </li>
       </ul>
     </>
