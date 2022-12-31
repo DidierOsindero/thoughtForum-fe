@@ -1,13 +1,24 @@
 import { Link } from "react-router-dom";
 import { auth, googleAuthProvider } from "../configureFirebase";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, User } from "firebase/auth";
+import { useState } from "react";
 
 export const NavBar = (): JSX.Element => {
+  const [user, setUser] = useState<User | null>(null);
+
   const handSignInClicked = async () => {
     console.log("Signing In User");
     const userCredential = await signInWithPopup(auth, googleAuthProvider);
-    console.log(userCredential);
+    setUser(userCredential.user);
   };
+
+  const handSignOutClicked = async () => {
+    auth.signOut();
+    setUser(null);
+    alert("You have been signed-out");
+  };
+
+  console.log("USER:", user);
   return (
     <>
       <ul className="navBarList">
@@ -43,9 +54,16 @@ export const NavBar = (): JSX.Element => {
           </Link>
         </li>
         <li className="navBarListItemRight">
-          <div className="navBarItemText" onClick={handSignInClicked}>
-            Sign-In
-          </div>
+          {user === null && (
+            <div className="navBarItemText" onClick={handSignInClicked}>
+              Sign-In
+            </div>
+          )}
+          {user && (
+            <div className="navBarItemText" onClick={handSignOutClicked}>
+              Sign-Out
+            </div>
+          )}
         </li>
       </ul>
     </>
