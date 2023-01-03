@@ -30,7 +30,7 @@ export const BASE_URL = "http://localhost:4000/";
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(null);
-  console.log("APP USER:", user);
+
   return (
     <div className="app">
       <UserContext.Provider value={{ user, setUser }}>

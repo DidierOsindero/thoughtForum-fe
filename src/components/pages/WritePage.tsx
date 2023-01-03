@@ -1,6 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { User } from "firebase/auth";
+import { useContext, useEffect, useState } from "react";
 import { PostType, PostPrivacy, BASE_URL } from "../../App";
+import { UserContext } from "../../context";
 
 interface INewPostData {
   img: string | null;
@@ -20,6 +22,10 @@ export const WritePage = (): JSX.Element => {
     category: null,
     privacy: null,
   });
+  const { user } = useContext(UserContext) as {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  };
 
   useEffect(() => {
     if (selectedImage) {
@@ -47,11 +53,13 @@ export const WritePage = (): JSX.Element => {
 
   const handleSubmitPost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("FORM SUBMITTED");
-    alert("Post Submittedd");
-    const config = { headers: { Authorization: "The Authorised Guy" } };
-    const reponse = await axios.post(BASE_URL + "write", newPostData, config);
-    const createdPost = reponse.data;
+    const token = await user?.getIdToken();
+    console.log("Token:", token);
+    const config = { headers: { Authorization: "Bearer " + token } };
+    console.log("Configuration:", config);
+    const response = await axios.post(BASE_URL + "write", newPostData, config);
+    const createdPost = response.data;
+    alert("Post Submitted");
     console.log("Created Post", createdPost);
   };
 
