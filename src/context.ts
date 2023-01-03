@@ -1,5 +1,6 @@
+import { User } from "firebase/auth";
 import { createContext } from "react";
-export const UserTokenContext = createContext<{
-  userToken: string | null;
-  setUserToken: React.Dispatch<React.SetStateAction<string | null>>;
+export const UserContext = createContext<{
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 } | null>(null);

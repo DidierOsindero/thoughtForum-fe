@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { auth, googleAuthProvider } from "../configureFirebase";
 import { signInWithPopup, User } from "firebase/auth";
-import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../context";
 
 export const NavBar = (): JSX.Element => {
-  const [user, setUser] = useState<User | null>(null);
+  const { user, setUser } = useContext(UserContext) as {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  };
 
   const handSignInClicked = async () => {
     console.log("Signing In User");

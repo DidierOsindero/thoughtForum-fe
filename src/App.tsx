@@ -2,7 +2,7 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { Footer } from "./components/Footer";
-import { UserTokenContext } from "./context";
+import { UserContext } from "./context";
 import { useState } from "react";
 import { User } from "firebase/auth";
 
@@ -29,14 +29,15 @@ export interface IUserData {
 export const BASE_URL = "http://localhost:4000/";
 
 function App(): JSX.Element {
-  const [userToken, setUserToken] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  console.log("APP USER:", user);
   return (
     <div className="app">
-      <UserTokenContext.Provider value={{ userToken, setUserToken }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Header />
         <MainContent />
         <Footer />
-      </UserTokenContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 }
