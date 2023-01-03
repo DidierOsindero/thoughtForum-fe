@@ -14,14 +14,17 @@ interface INewPostData {
 
 export const WritePage = (): JSX.Element => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [imageURL, setImageURL] = useState<string | null>(null);
+  const [imageURL, setImageURL] = useState<string | null>(
+    "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+  );
   const [newPostData, setNewPostData] = useState<INewPostData>({
-    img: null,
+    img: "",
     title: "",
     content: "",
     category: null,
     privacy: null,
   });
+
   const { user } = useContext(UserContext) as {
     user: User | null;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -57,6 +60,7 @@ export const WritePage = (): JSX.Element => {
     console.log("Token:", token);
     const config = { headers: { Authorization: "Bearer " + token } };
     console.log("Configuration:", config);
+
     const response = await axios.post(BASE_URL + "write", newPostData, config);
     const createdPost = response.data;
     alert("Post Submitted");
