@@ -2,6 +2,9 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { Footer } from "./components/Footer";
+import { UserTokenContext } from "./context";
+import { useState } from "react";
+import { User } from "firebase/auth";
 
 export type PostType = "thought" | "science" | "art";
 export type PostPrivacy = "public" | "private";
@@ -23,14 +26,17 @@ export interface IUserData {
   last_name: string;
 }
 
-export const BASE_URL = "http://localhost:5002/";
+export const BASE_URL = "http://localhost:4000/";
 
 function App(): JSX.Element {
+  const [userToken, setUserToken] = useState<string | null>(null);
   return (
     <div className="app">
-      <Header />
-      <MainContent />
-      <Footer />
+      <UserTokenContext.Provider value={{ userToken, setUserToken }}>
+        <Header />
+        <MainContent />
+        <Footer />
+      </UserTokenContext.Provider>
     </div>
   );
 }
