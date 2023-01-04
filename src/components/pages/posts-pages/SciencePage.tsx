@@ -8,6 +8,7 @@ export const SciencePage = (): JSX.Element => {
   );
   return (
     <div className="postsPageContainer">
+      <h1 className="postsPageTitle">Science</h1>
       <PostsListView postDataArray={scienceDummyDatauseRef.current} />
     </div>
   );

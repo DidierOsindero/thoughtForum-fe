@@ -8,6 +8,7 @@ export const ThoughtPage = (): JSX.Element => {
   );
   return (
     <div className="postsPageContainer">
+      <h1 className="postsPageTitle">Thought</h1>
       <PostsListView postDataArray={thoughtDummyDatauseRef.current} />
     </div>
   );

@@ -12,6 +12,7 @@ export const ProfilePage = (): JSX.Element => {
     user: User | null;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
   };
+
   return (
     <div className="ProfilePageContainer">
       <h2 style={{ textAlign: "center" }}>{user?.displayName}</h2>

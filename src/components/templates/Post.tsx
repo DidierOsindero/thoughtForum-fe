@@ -1,20 +1,10 @@
-import { User } from "firebase/auth";
-import { useContext } from "react";
 import { IPostData } from "../../App";
-import { UserContext } from "../../context";
-import { dummyUserData } from "../../utils/dummyUserData";
 
 export interface IPostProps {
   postData: IPostData;
 }
 
 export function Post({ postData }: IPostProps): JSX.Element {
-  //GET user from context
-  const { user } = useContext(UserContext) as {
-    user: User | null;
-    setUser: React.Dispatch<React.SetStateAction<User | null>>;
-  };
-
   const indexOfT = postData.creation_date.indexOf("T");
   const postDate = postData.creation_date.slice(0, indexOfT);
   return (
@@ -22,7 +12,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
       <img src={postData.img} alt="" className="postIMG" />
       <div className="postDetails">
         <p className="postUserName">
-          <i>{user?.displayName}</i>
+          <i>John Bloggs</i>
         </p>
       </div>
       <div className="postTitle">

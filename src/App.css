@@ -182,6 +182,10 @@ POSTS_PAGE===============
   flex-wrap: wrap;
 }
 
+.postsPageTitle {
+  text-align: center;
+}
+
 .post {
   overflow: hidden;
   border: rgba(0, 0, 0, 0.2) 1px solid;

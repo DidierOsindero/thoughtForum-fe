@@ -8,6 +8,7 @@ export const ArtPage = (): JSX.Element => {
   );
   return (
     <div className="postsPageContainer">
+      <h1 className="postsPageTitle">Art</h1>
       <PostsListView postDataArray={artDummyDatauseRef.current} />
     </div>
   );
