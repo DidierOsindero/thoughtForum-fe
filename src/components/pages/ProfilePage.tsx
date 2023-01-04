@@ -1,14 +1,20 @@
+import { User } from "firebase/auth";
+import { useContext } from "react";
+import { UserContext } from "../../context";
 import { dummyData } from "../../utils/dummyPostData";
 import { dummyUserData } from "../../utils/dummyUserData";
 import { MyPostsListView } from "../templates/MyPostsListView";
 const currentUser = dummyUserData[0];
 
 export const ProfilePage = (): JSX.Element => {
+  //GET user from context
+  const { user } = useContext(UserContext) as {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  };
   return (
     <div className="ProfilePageContainer">
-      <h2 style={{ textAlign: "center" }}>
-        {currentUser.first_name} {currentUser.last_name}
-      </h2>
+      <h2 style={{ textAlign: "center" }}>{user?.displayName}</h2>
       <div className="leftOfPage">
         <MyPostsListView
           postDataArray={dummyData.filter(

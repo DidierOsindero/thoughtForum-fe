@@ -22,7 +22,6 @@ export const NavBar = (): JSX.Element => {
     alert("You have been signed-out");
   };
 
-  console.log("USER:", user);
   return (
     <>
       <ul className="navBarList">
@@ -52,11 +51,16 @@ export const NavBar = (): JSX.Element => {
             <div className="navBarItemText">Write</div>
           </Link>
         </li>
-        <li className="navBarListItem">
-          <Link to="./profile" className="navBarItemLink">
-            <div className="navBarItemText">Profile</div>
-          </Link>
-        </li>
+
+        {/* Only Display PROFILE if user is signed in */}
+
+        {user && (
+          <li className="navBarListItem">
+            <Link to="./profile" className="navBarItemLink">
+              <div className="navBarItemText">Profile</div>
+            </Link>
+          </li>
+        )}
         <li className="navBarListItemRight">
           {user === null && (
             <div className="navBarItemText" onClick={handSignInClicked}>

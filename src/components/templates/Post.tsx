@@ -1,4 +1,7 @@
+import { User } from "firebase/auth";
+import { useContext } from "react";
 import { IPostData } from "../../App";
+import { UserContext } from "../../context";
 import { dummyUserData } from "../../utils/dummyUserData";
 
 export interface IPostProps {
@@ -6,9 +9,11 @@ export interface IPostProps {
 }
 
 export function Post({ postData }: IPostProps): JSX.Element {
-  const creatorOfPost = dummyUserData.find(
-    (user) => postData.user_id === user.userid
-  );
+  //GET user from context
+  const { user } = useContext(UserContext) as {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  };
 
   const indexOfT = postData.creation_date.indexOf("T");
   const postDate = postData.creation_date.slice(0, indexOfT);
@@ -17,9 +22,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
       <img src={postData.img} alt="" className="postIMG" />
       <div className="postDetails">
         <p className="postUserName">
-          <i>
-            {creatorOfPost?.first_name} {creatorOfPost?.last_name}
-          </i>
+          <i>{user?.displayName}</i>
         </p>
       </div>
       <div className="postTitle">

@@ -13,6 +13,12 @@ interface INewPostData {
 }
 
 export const WritePage = (): JSX.Element => {
+  //GET user from context
+  const { user } = useContext(UserContext) as {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  };
+
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imageURL, setImageURL] = useState<string | null>(
     "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
@@ -24,11 +30,6 @@ export const WritePage = (): JSX.Element => {
     category: null,
     privacy: null,
   });
-
-  const { user } = useContext(UserContext) as {
-    user: User | null;
-    setUser: React.Dispatch<React.SetStateAction<User | null>>;
-  };
 
   useEffect(() => {
     if (selectedImage) {
@@ -68,138 +69,142 @@ export const WritePage = (): JSX.Element => {
   };
 
   console.log(newPostData);
-  return (
-    <div className="WritePageContainer">
-      <form onSubmit={(e) => handleSubmitPost(e)}>
-        <div className="leftOfPage">
-          <div className="createPostContainer">
-            <div className="previewImageContainer">
-              {imageURL && selectedImage && (
-                <>
-                  <img
-                    className="createPostIMG"
-                    src={imageURL}
-                    alt={selectedImage.name}
-                    height="100px"
-                  />
-                </>
-              )}
-              {!(imageURL && selectedImage) && (
-                <>
-                  <img
-                    className="createPostIMG"
-                    src="https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                    alt=""
-                    height="100px"
-                  />
-                </>
-              )}
-            </div>
-            <div className="featuredPostTitle">
-              <textarea
-                value={newPostData.title}
-                onChange={(e) =>
-                  setNewPostData({ ...newPostData, title: e.target.value })
-                }
-                className="createPostTitleInput"
-                placeholder="Write title here..."
-                required
-                maxLength={50}
-              ></textarea>
-              <br />
-              <textarea
-                value={newPostData.content}
-                onChange={(e) =>
-                  setNewPostData({ ...newPostData, content: e.target.value })
-                }
-                className="createPostTextInput"
-                placeholder="Write post content here..."
-                required
-              ></textarea>
-            </div>
-          </div>
-        </div>
-        <div className="rightOfPage">
-          <div className="createPostSettingsContainer">
-            <label className="chooseIMG submitButton" htmlFor="img">
-              {imageURL && selectedImage && <span>Change image</span>}
-              {!(imageURL && selectedImage) && <span>Choose an image</span>}
-            </label>
-            <input
-              className="createPostInputIMG"
-              type="file"
-              id="img"
-              name="img"
-              accept="image/*"
-              onChange={(e) =>
-                setSelectedImage(e.target.files ? e.target.files[0] : null)
-              }
-            ></input>
-
-            <div className="postTypeRadioContainer">
-              <p>
-                <b>Type:</b>
-              </p>
-
-              <input
-                type="radio"
-                name="postTypeRadio"
-                value="thought"
-                required
-                onChange={(e) => handlePostType(e.target.value as PostType)}
-              />
-              <label htmlFor="postTypeRadio">Thought</label>
-              <br />
-              <input
-                type="radio"
-                name="postTypeRadio"
-                value="science"
-                onChange={(e) => handlePostType(e.target.value as PostType)}
-              />
-              <label htmlFor="postTypeRadio"> Science</label>
-              <br />
-              <input
-                type="radio"
-                name="postTypeRadio"
-                value="art"
-                onChange={(e) => handlePostType(e.target.value as PostType)}
-              />
-              <label htmlFor="postTypeRadio"> Art</label>
-            </div>
-
-            <div className="postTypeRadioContainer">
-              <p>
-                <b>Privacy:</b>
-              </p>
-
-              <input
-                type="radio"
-                name="postPrivacyRadio"
-                value="public"
-                required
-                onChange={(e) =>
-                  handlePrivacyChoice(e.target.value as PostPrivacy)
-                }
-              />
-              <label htmlFor="postPrivacyRadio">Public</label>
-              <br />
-              <input
-                type="radio"
-                name="postPrivacyRadio"
-                value="private"
-                onChange={(e) =>
-                  handlePrivacyChoice(e.target.value as PostPrivacy)
-                }
-              />
-              <label htmlFor="postPrivacyRadio"> Private</label>
-            </div>
-            <br />
-            <div>
-              <input className="submitButton" type="submit" value="✅ Post" />
+  if (user) {
+    return (
+      <div className="WritePageContainer">
+        <form onSubmit={(e) => handleSubmitPost(e)}>
+          <div className="leftOfPage">
+            <div className="createPostContainer">
+              <div className="previewImageContainer">
+                {imageURL && selectedImage && (
+                  <>
+                    <img
+                      className="createPostIMG"
+                      src={imageURL}
+                      alt={selectedImage.name}
+                      height="100px"
+                    />
+                  </>
+                )}
+                {!(imageURL && selectedImage) && (
+                  <>
+                    <img
+                      className="createPostIMG"
+                      src="https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                      alt=""
+                      height="100px"
+                    />
+                  </>
+                )}
+              </div>
+              <div className="featuredPostTitle">
+                <textarea
+                  value={newPostData.title}
+                  onChange={(e) =>
+                    setNewPostData({ ...newPostData, title: e.target.value })
+                  }
+                  className="createPostTitleInput"
+                  placeholder="Write title here..."
+                  required
+                  maxLength={50}
+                ></textarea>
+                <br />
+                <textarea
+                  value={newPostData.content}
+                  onChange={(e) =>
+                    setNewPostData({ ...newPostData, content: e.target.value })
+                  }
+                  className="createPostTextInput"
+                  placeholder="Write post content here..."
+                  required
+                ></textarea>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
-    </div>
-  );
+          <div className="rightOfPage">
+            <div className="createPostSettingsContainer">
+              <label className="chooseIMG submitButton" htmlFor="img">
+                {imageURL && selectedImage && <span>Change image</span>}
+                {!(imageURL && selectedImage) && <span>Choose an image</span>}
+              </label>
+              <input
+                className="createPostInputIMG"
+                type="file"
+                id="img"
+                name="img"
+                accept="image/*"
+                onChange={(e) =>
+                  setSelectedImage(e.target.files ? e.target.files[0] : null)
+                }
+              ></input>
+
+              <div className="postTypeRadioContainer">
+                <p>
+                  <b>Type:</b>
+                </p>
+
+                <input
+                  type="radio"
+                  name="postTypeRadio"
+                  value="thought"
+                  required
+                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                />
+                <label htmlFor="postTypeRadio">Thought</label>
+                <br />
+                <input
+                  type="radio"
+                  name="postTypeRadio"
+                  value="science"
+                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                />
+                <label htmlFor="postTypeRadio"> Science</label>
+                <br />
+                <input
+                  type="radio"
+                  name="postTypeRadio"
+                  value="art"
+                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                />
+                <label htmlFor="postTypeRadio"> Art</label>
+              </div>
+
+              <div className="postTypeRadioContainer">
+                <p>
+                  <b>Privacy:</b>
+                </p>
+
+                <input
+                  type="radio"
+                  name="postPrivacyRadio"
+                  value="public"
+                  required
+                  onChange={(e) =>
+                    handlePrivacyChoice(e.target.value as PostPrivacy)
+                  }
+                />
+                <label htmlFor="postPrivacyRadio">Public</label>
+                <br />
+                <input
+                  type="radio"
+                  name="postPrivacyRadio"
+                  value="private"
+                  onChange={(e) =>
+                    handlePrivacyChoice(e.target.value as PostPrivacy)
+                  }
+                />
+                <label htmlFor="postPrivacyRadio"> Private</label>
+              </div>
+              <br />
+              <div>
+                <input className="submitButton" type="submit" value="✅ Post" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  } else {
+    return <h1>Please Sign-In to write a post</h1>;
+  }
 };
