@@ -1,14 +1,14 @@
 import axios from "axios";
 import { User } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
-import { PostType, PostPrivacy, BASE_URL } from "../../App";
+import { PostCategory, PostPrivacy, BASE_URL } from "../../App";
 import { UserContext } from "../../context";
 
 interface INewPostData {
   img: string | null;
   title: string;
   content: string;
-  category: PostType | null;
+  category: PostCategory | null;
   privacy: PostPrivacy | null;
 }
 
@@ -45,7 +45,7 @@ export const WritePage = (): JSX.Element => {
     });
   }, [imageURL]);
 
-  const handlePostType = (chosenType: PostType) => {
+  const handlePostType = (chosenType: PostCategory) => {
     setNewPostData((prev) => {
       return { ...prev, category: chosenType };
     });
@@ -138,7 +138,9 @@ export const WritePage = (): JSX.Element => {
                   name="postTypeRadio"
                   value="thought"
                   required
-                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                  onChange={(e) =>
+                    handlePostType(e.target.value as PostCategory)
+                  }
                 />
                 <label htmlFor="postTypeRadio">Thought</label>
                 <br />
@@ -146,7 +148,9 @@ export const WritePage = (): JSX.Element => {
                   type="radio"
                   name="postTypeRadio"
                   value="science"
-                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                  onChange={(e) =>
+                    handlePostType(e.target.value as PostCategory)
+                  }
                 />
                 <label htmlFor="postTypeRadio"> Science</label>
                 <br />
@@ -154,7 +158,9 @@ export const WritePage = (): JSX.Element => {
                   type="radio"
                   name="postTypeRadio"
                   value="art"
-                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                  onChange={(e) =>
+                    handlePostType(e.target.value as PostCategory)
+                  }
                 />
                 <label htmlFor="postTypeRadio"> Art</label>
               </div>
