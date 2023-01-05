@@ -27,6 +27,10 @@ button:hover {
   transform: scale(1.04);
 }
 
+button:active {
+  box-shadow: rgba(0, 0, 0, 0.368) 0px 1px 6px;
+}
+
 /*
 ==========HEADER===============
 */
@@ -315,6 +319,19 @@ PROFILE_PAGE===============
 */
 
 /*
+POST===============
+*/
+.delete-post-btn {
+  border: solid 1px rgba(227, 26, 26, 0.663);
+}
+
+.postDate,
+.userPostPrivacy {
+  margin: 10px 5%;
+  text-align: right;
+  font-size: 0.9rem;
+}
+/*
 ==============FOOTER===============
 */
 
@@ -326,11 +343,3 @@ PROFILE_PAGE===============
 /*
 ==============TEMPLATES===============
 */
-/*
-POST===============
-*/
-.postDate {
-  margin: 10px 5%;
-  text-align: right;
-  font-size: 0.9rem;
-}
