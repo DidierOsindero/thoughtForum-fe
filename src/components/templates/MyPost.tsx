@@ -3,9 +3,13 @@ import { BASE_URL, IPostData } from "../../App";
 
 export interface IMyPostProps {
   postData: IPostData;
+  getUserPostsData: () => Promise<void>;
 }
 
-export function MyPost({ postData }: IMyPostProps): JSX.Element {
+export function MyPost({
+  postData,
+  getUserPostsData,
+}: IMyPostProps): JSX.Element {
   const indexOfT = postData.creation_date.indexOf("T");
   const postDate = postData.creation_date.slice(0, indexOfT);
 
@@ -13,8 +17,10 @@ export function MyPost({ postData }: IMyPostProps): JSX.Element {
     const response = await axios.delete(
       BASE_URL + "profile/posts?postid=" + postId
     );
+    getUserPostsData();
     console.log("Deleted Post:", response.data);
   };
+
   return (
     <div className="post">
       <img src={postData.img} alt="" className="postIMG" />

@@ -31,7 +31,10 @@ export const ProfilePage = (): JSX.Element => {
     <div className="ProfilePageContainer">
       <h2 style={{ textAlign: "center" }}>{user?.displayName}</h2>
       <div className="leftOfPage">
-        <MyPostsListView postDataArray={userPostDataArray} />
+        <MyPostsListView
+          postDataArray={userPostDataArray}
+          getUserPostsData={getUserPostsData}
+        />
       </div>
 
       <div className="rightOfPage">
