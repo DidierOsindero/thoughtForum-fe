@@ -65,12 +65,13 @@ export const WritePage = (): JSX.Element => {
     const createdPost = response.data;
     alert("Post Submitted");
     setNewPostData({
-      img: imageURL,
+      img: placeholderImage,
       title: "",
       content: "",
       category: null,
       privacy: null,
     });
+    setImageURL(placeholderImage);
     console.log("Created Post", createdPost);
   };
 
