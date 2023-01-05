@@ -210,12 +210,8 @@ WRITE_PAGE===============
 }
 
 .createPostInputIMG {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
+  border: 1.5px solid rgb(135, 134, 134);
+  border-radius: 10px;
 }
 
 .chooseIMG {

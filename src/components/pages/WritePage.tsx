@@ -13,29 +13,31 @@ interface INewPostData {
 }
 
 export const WritePage = (): JSX.Element => {
+  //Image Address for placeholder image
+  const placeholderImage =
+    "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
+
   //GET user from context
   const { user } = useContext(UserContext) as {
     user: User | null;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
   };
 
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [imageURL, setImageURL] = useState<string | null>(
-    "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-  );
+  const [imageURLInput, setImageURLInput] = useState<string>("");
+  const [imageURL, setImageURL] = useState<string>(placeholderImage);
+
+  const handleSaveImage = () => {
+    setImageURL(imageURLInput);
+    setImageURLInput("");
+  };
+
   const [newPostData, setNewPostData] = useState<INewPostData>({
-    img: "",
+    img: placeholderImage,
     title: "",
     content: "",
     category: null,
     privacy: null,
   });
-
-  useEffect(() => {
-    if (selectedImage) {
-      setImageURL(URL.createObjectURL(selectedImage));
-    }
-  }, [selectedImage]);
 
   useEffect(() => {
     setNewPostData((prev) => {
@@ -62,10 +64,16 @@ export const WritePage = (): JSX.Element => {
     const response = await axios.post(BASE_URL + "write", newPostData, config);
     const createdPost = response.data;
     alert("Post Submitted");
+    setNewPostData({
+      img: imageURL,
+      title: "",
+      content: "",
+      category: null,
+      privacy: null,
+    });
     console.log("Created Post", createdPost);
   };
 
-  console.log(newPostData);
   if (user) {
     return (
       <div className="WritePageContainer">
@@ -73,26 +81,12 @@ export const WritePage = (): JSX.Element => {
           <div className="leftOfPage">
             <div className="createPostContainer">
               <div className="previewImageContainer">
-                {imageURL && selectedImage && (
-                  <>
-                    <img
-                      className="createPostIMG"
-                      src={imageURL}
-                      alt={selectedImage.name}
-                      height="100px"
-                    />
-                  </>
-                )}
-                {!(imageURL && selectedImage) && (
-                  <>
-                    <img
-                      className="createPostIMG"
-                      src="https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      height="100px"
-                    />
-                  </>
-                )}
+                <img
+                  className="createPostIMG"
+                  src={imageURL}
+                  alt=""
+                  height="100px"
+                />
               </div>
               <div className="featuredPostTitle">
                 <textarea
@@ -120,21 +114,19 @@ export const WritePage = (): JSX.Element => {
           </div>
           <div className="rightOfPage">
             <div className="createPostSettingsContainer">
-              <label className="chooseIMG submitButton" htmlFor="img">
-                {imageURL && selectedImage && <span>Change image</span>}
-                {!(imageURL && selectedImage) && <span>Choose an image</span>}
-              </label>
               <input
                 className="createPostInputIMG"
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-                onChange={(e) =>
-                  setSelectedImage(e.target.files ? e.target.files[0] : null)
-                }
+                type="text"
+                placeholder="Paste Image Address"
+                value={imageURLInput}
+                onChange={(e) => setImageURLInput(e.target.value)}
               ></input>
-
+              <button
+                className="chooseIMG submitButton"
+                onClick={handleSaveImage}
+              >
+                Save Image
+              </button>
               <div className="postTypeRadioContainer">
                 <p>
                   <b>Type:</b>
