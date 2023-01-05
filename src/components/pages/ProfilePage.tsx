@@ -1,6 +1,6 @@
 import axios from "axios";
 import { User } from "firebase/auth";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { IPostData, BASE_URL } from "../../App";
 import { UserContext } from "../../context";
 import { MyPostsListView } from "../templates/MyPostsListView";
@@ -13,16 +13,17 @@ export const ProfilePage = (): JSX.Element => {
   };
 
   const [userPostDataArray, setUserPostDataArray] = useState<IPostData[]>([]);
-  const getUserPostsData = async () => {
+
+  const getUserPostsData = useCallback(async () => {
     const token = await user?.getIdToken();
     const config = { headers: { Authorization: "Bearer " + token } };
     const { data } = await axios.get(BASE_URL + "profile/posts", config);
     setUserPostDataArray(data);
-  };
+  }, [user]);
 
   useEffect(() => {
     getUserPostsData();
-  }, []);
+  }, [getUserPostsData]);
 
   console.log("USER POSTS", userPostDataArray);
 
