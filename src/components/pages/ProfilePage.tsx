@@ -1,10 +1,9 @@
+import axios from "axios";
 import { User } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { IPostData, BASE_URL } from "../../App";
 import { UserContext } from "../../context";
-import { dummyData } from "../../utils/dummyPostData";
-import { dummyUserData } from "../../utils/dummyUserData";
 import { MyPostsListView } from "../templates/MyPostsListView";
-const currentUser = dummyUserData[0];
 
 export const ProfilePage = (): JSX.Element => {
   //GET user from context
@@ -13,15 +12,25 @@ export const ProfilePage = (): JSX.Element => {
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
   };
 
+  const [userPostDataArray, setUserPostDataArray] = useState<IPostData[]>([]);
+  const getUserPostsData = async () => {
+    const token = await user?.getIdToken();
+    const config = { headers: { Authorization: "Bearer " + token } };
+    const { data } = await axios.get(BASE_URL + "profile/posts", config);
+    setUserPostDataArray(data);
+  };
+
+  useEffect(() => {
+    getUserPostsData();
+  }, []);
+
+  console.log("USER POSTS", userPostDataArray);
+
   return (
     <div className="ProfilePageContainer">
       <h2 style={{ textAlign: "center" }}>{user?.displayName}</h2>
       <div className="leftOfPage">
-        <MyPostsListView
-          postDataArray={dummyData.filter(
-            (el) => el.user_id === currentUser.userid
-          )}
-        />
+        <MyPostsListView postDataArray={userPostDataArray} />
       </div>
 
       <div className="rightOfPage">

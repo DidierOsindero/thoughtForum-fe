@@ -58,10 +58,7 @@ export const WritePage = (): JSX.Element => {
   const handleSubmitPost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const token = await user?.getIdToken();
-    console.log("Token:", token);
     const config = { headers: { Authorization: "Bearer " + token } };
-    console.log("Configuration:", config);
-
     const response = await axios.post(BASE_URL + "write", newPostData, config);
     const createdPost = response.data;
     alert("Post Submitted");
