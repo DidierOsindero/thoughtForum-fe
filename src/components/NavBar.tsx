@@ -1,6 +1,27 @@
 import { Link } from "react-router-dom";
+import { auth, googleAuthProvider } from "../configureFirebase";
+import { signInWithPopup, User } from "firebase/auth";
+import { useContext } from "react";
+import { UserContext } from "../context";
 
 export const NavBar = (): JSX.Element => {
+  const { user, setUser } = useContext(UserContext) as {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  };
+
+  const handSignInClicked = async () => {
+    console.log("Signing In User");
+    const userCredential = await signInWithPopup(auth, googleAuthProvider);
+    setUser(userCredential.user);
+  };
+
+  const handSignOutClicked = async () => {
+    auth.signOut();
+    setUser(null);
+    alert("You have been signed-out");
+  };
+
   return (
     <>
       <ul className="navBarList">
@@ -30,13 +51,29 @@ export const NavBar = (): JSX.Element => {
             <div className="navBarItemText">Write</div>
           </Link>
         </li>
-        <li className="navBarListItem">
-          <Link to="./profile" className="navBarItemLink">
-            <div className="navBarItemText">Profile</div>
-          </Link>
-        </li>
+
+        {/* Only Display PROFILE if user is signed in */}
+
+        {user && (
+          <li className="navBarListItem">
+            <Link to="./profile" className="navBarItemLink">
+              <div className="navBarItemText">Profile</div>
+            </Link>
+          </li>
+        )}
         <li className="navBarListItemRight">
-          <div className="navBarItemText">Sign-In</div>
+          {user === null && (
+            <div className="navBarItemText" onClick={handSignInClicked}>
+              Sign-In
+            </div>
+          )}
+          {user && (
+            <Link to="./" className="navBarItemLink">
+              <div className="navBarItemText" onClick={handSignOutClicked}>
+                Sign-Out
+              </div>
+            </Link>
+          )}
         </li>
       </ul>
     </>
