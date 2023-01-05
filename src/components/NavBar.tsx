@@ -68,9 +68,11 @@ export const NavBar = (): JSX.Element => {
             </div>
           )}
           {user && (
-            <div className="navBarItemText" onClick={handSignOutClicked}>
-              Sign-Out
-            </div>
+            <Link to="./" className="navBarItemLink">
+              <div className="navBarItemText" onClick={handSignOutClicked}>
+                Sign-Out
+              </div>
+            </Link>
           )}
         </li>
       </ul>
