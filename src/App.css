@@ -191,6 +191,7 @@ POSTS_PAGE===============
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 20px;
   margin: 20px 40px;
+  min-width: 20%;
   max-width: 40%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
