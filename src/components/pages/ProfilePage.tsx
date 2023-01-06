@@ -28,8 +28,6 @@ export const ProfilePage = (): JSX.Element => {
     getUserPostsData();
   }, [getUserPostsData]);
 
-  console.log("USER POSTS", userPostDataArray);
-
   const [currentFilterCategory, setCurrentFilterCategory] = useState<
     PostCategory | "all"
   >("all");
