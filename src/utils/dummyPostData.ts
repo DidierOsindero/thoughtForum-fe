@@ -12,6 +12,7 @@ export const dummyData: IPostData[] = [
     privacy: "public",
     hearts: 0,
     creation_date: "January 21 2023",
+    username: "Ted",
   },
   {
     user_id: "1",
@@ -24,6 +25,7 @@ export const dummyData: IPostData[] = [
     privacy: "public",
     hearts: 0,
     creation_date: "January 21 2023",
+    username: "T2ed",
   },
   {
     user_id: "1",
@@ -36,6 +38,7 @@ export const dummyData: IPostData[] = [
     privacy: "public",
     hearts: 0,
     creation_date: "January 22 2023",
+    username: "Jan321",
   },
   {
     user_id: "2",
@@ -48,6 +51,7 @@ export const dummyData: IPostData[] = [
     privacy: "public",
     hearts: 0,
     creation_date: "January 23 2023",
+    username: "231Ed",
   },
   {
     user_id: "3",
@@ -60,5 +64,6 @@ export const dummyData: IPostData[] = [
     privacy: "public",
     hearts: 0,
     creation_date: "January 24 2023",
+    username: "Bob41",
   },
 ];

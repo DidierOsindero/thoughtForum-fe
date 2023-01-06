@@ -61,7 +61,16 @@ export const WritePage = (): JSX.Element => {
     e.preventDefault();
     const token = await user?.getIdToken();
     const config = { headers: { Authorization: "Bearer " + token } };
-    const response = await axios.post(BASE_URL + "write", newPostData, config);
+
+    //===========Check if current user has a displayName otherwise assign username to null=======
+    const username = user?.displayName ? user.displayName : null;
+    const response = await axios.post(
+      BASE_URL + "write",
+      //===========Send backend newPostData as well as user displayName=======
+      { ...newPostData, username: username },
+      config
+    );
+
     const createdPost = response.data;
     alert("Post Submitted");
     setNewPostData({
