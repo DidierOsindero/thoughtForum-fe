@@ -6,7 +6,7 @@ import { UserContext } from "./context";
 import { useEffect, useState } from "react";
 import { User } from "firebase/auth";
 
-export type PostType = "thought" | "science" | "art";
+export type PostCategory = "thought" | "science" | "art";
 export type PostPrivacy = "public" | "private";
 export interface IPostData {
   user_id: string;
@@ -14,7 +14,7 @@ export interface IPostData {
   img: string;
   title: string;
   content: string;
-  category: PostType;
+  category: PostCategory;
   privacy: PostPrivacy;
   hearts: number;
   creation_date: string;

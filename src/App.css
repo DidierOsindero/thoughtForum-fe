@@ -190,30 +190,6 @@ POSTS_PAGE===============
   text-align: center;
 }
 
-.post {
-  overflow: hidden;
-  border: rgba(0, 0, 0, 0.2) 1px solid;
-  border-radius: 20px;
-  margin: 20px 40px;
-  min-width: 20%;
-  max-width: 40%;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  transition: 200ms;
-}
-
-.post:hover {
-  box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
-}
-
-.postIMG {
-  width: 100%;
-}
-
-.postContent {
-  text-align: left;
-  padding: 18px;
-}
 /*
 WRITE_PAGE===============
 */
@@ -234,12 +210,8 @@ WRITE_PAGE===============
 }
 
 .createPostInputIMG {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
+  border: 1.5px solid rgb(135, 134, 134);
+  border-radius: 10px;
 }
 
 .chooseIMG {
@@ -321,6 +293,30 @@ PROFILE_PAGE===============
 /*
 POST===============
 */
+.post {
+  overflow: hidden;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 20px;
+  margin: 20px 40px;
+  min-width: 20%;
+  max-width: 40%;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: 200ms;
+}
+
+.post:hover {
+  box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
+}
+
+.postIMG {
+  width: 100%;
+}
+
+.postContent {
+  text-align: left;
+  padding: 18px;
+}
 .delete-post-btn {
   border: solid 1px rgba(227, 26, 26, 0.663);
 }

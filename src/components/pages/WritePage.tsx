@@ -1,30 +1,38 @@
 import axios from "axios";
 import { User } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
-import { PostType, PostPrivacy, BASE_URL } from "../../App";
+import { PostCategory, PostPrivacy, BASE_URL } from "../../App";
 import { UserContext } from "../../context";
 
 interface INewPostData {
   img: string | null;
   title: string;
   content: string;
-  category: PostType | null;
+  category: PostCategory | null;
   privacy: PostPrivacy | null;
 }
 
 export const WritePage = (): JSX.Element => {
+  //Image Address for placeholder image
+  const placeholderImage =
+    "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
+
   //GET user from context
   const { user } = useContext(UserContext) as {
     user: User | null;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
   };
 
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [imageURL, setImageURL] = useState<string | null>(
-    "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-  );
+  const [imageURLInput, setImageURLInput] = useState<string>("");
+  const [imageURL, setImageURL] = useState<string>(placeholderImage);
+
+  const handleSaveImage = () => {
+    setImageURL(imageURLInput);
+    setImageURLInput("");
+  };
+
   const [newPostData, setNewPostData] = useState<INewPostData>({
-    img: "",
+    img: placeholderImage,
     title: "",
     content: "",
     category: null,
@@ -32,18 +40,12 @@ export const WritePage = (): JSX.Element => {
   });
 
   useEffect(() => {
-    if (selectedImage) {
-      setImageURL(URL.createObjectURL(selectedImage));
-    }
-  }, [selectedImage]);
-
-  useEffect(() => {
     setNewPostData((prev) => {
       return { ...prev, img: imageURL };
     });
   }, [imageURL]);
 
-  const handlePostType = (chosenType: PostType) => {
+  const handlePostType = (chosenType: PostCategory) => {
     setNewPostData((prev) => {
       return { ...prev, category: chosenType };
     });
@@ -62,10 +64,17 @@ export const WritePage = (): JSX.Element => {
     const response = await axios.post(BASE_URL + "write", newPostData, config);
     const createdPost = response.data;
     alert("Post Submitted");
+    setNewPostData({
+      img: placeholderImage,
+      title: "",
+      content: "",
+      category: null,
+      privacy: null,
+    });
+    setImageURL(placeholderImage);
     console.log("Created Post", createdPost);
   };
 
-  console.log(newPostData);
   if (user) {
     return (
       <div className="WritePageContainer">
@@ -73,26 +82,12 @@ export const WritePage = (): JSX.Element => {
           <div className="leftOfPage">
             <div className="createPostContainer">
               <div className="previewImageContainer">
-                {imageURL && selectedImage && (
-                  <>
-                    <img
-                      className="createPostIMG"
-                      src={imageURL}
-                      alt={selectedImage.name}
-                      height="100px"
-                    />
-                  </>
-                )}
-                {!(imageURL && selectedImage) && (
-                  <>
-                    <img
-                      className="createPostIMG"
-                      src="https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      height="100px"
-                    />
-                  </>
-                )}
+                <img
+                  className="createPostIMG"
+                  src={imageURL}
+                  alt=""
+                  height="100px"
+                />
               </div>
               <div className="featuredPostTitle">
                 <textarea
@@ -120,21 +115,19 @@ export const WritePage = (): JSX.Element => {
           </div>
           <div className="rightOfPage">
             <div className="createPostSettingsContainer">
-              <label className="chooseIMG submitButton" htmlFor="img">
-                {imageURL && selectedImage && <span>Change image</span>}
-                {!(imageURL && selectedImage) && <span>Choose an image</span>}
-              </label>
               <input
                 className="createPostInputIMG"
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-                onChange={(e) =>
-                  setSelectedImage(e.target.files ? e.target.files[0] : null)
-                }
+                type="text"
+                placeholder="Paste Image Address"
+                value={imageURLInput}
+                onChange={(e) => setImageURLInput(e.target.value)}
               ></input>
-
+              <button
+                className="chooseIMG submitButton"
+                onClick={handleSaveImage}
+              >
+                Save Image
+              </button>
               <div className="postTypeRadioContainer">
                 <p>
                   <b>Type:</b>
@@ -145,7 +138,9 @@ export const WritePage = (): JSX.Element => {
                   name="postTypeRadio"
                   value="thought"
                   required
-                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                  onChange={(e) =>
+                    handlePostType(e.target.value as PostCategory)
+                  }
                 />
                 <label htmlFor="postTypeRadio">Thought</label>
                 <br />
@@ -153,7 +148,9 @@ export const WritePage = (): JSX.Element => {
                   type="radio"
                   name="postTypeRadio"
                   value="science"
-                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                  onChange={(e) =>
+                    handlePostType(e.target.value as PostCategory)
+                  }
                 />
                 <label htmlFor="postTypeRadio"> Science</label>
                 <br />
@@ -161,7 +158,9 @@ export const WritePage = (): JSX.Element => {
                   type="radio"
                   name="postTypeRadio"
                   value="art"
-                  onChange={(e) => handlePostType(e.target.value as PostType)}
+                  onChange={(e) =>
+                    handlePostType(e.target.value as PostCategory)
+                  }
                 />
                 <label htmlFor="postTypeRadio"> Art</label>
               </div>

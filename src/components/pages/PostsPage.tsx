@@ -17,6 +17,7 @@ export const PostsPage = (): JSX.Element => {
 
   return (
     <div className="postsPageContainer">
+      <h1 className="postsPageTitle">All Posts</h1>
       {postDataArray && <PostsListView postDataArray={postDataArray} />}
     </div>
   );

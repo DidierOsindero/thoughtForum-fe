@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "firebase/auth";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { IPostData, BASE_URL } from "../../App";
+import { IPostData, BASE_URL, PostCategory } from "../../App";
 import { UserContext } from "../../context";
 import { MyPostsListView } from "../templates/MyPostsListView";
 
@@ -18,7 +18,9 @@ export const ProfilePage = (): JSX.Element => {
     const token = await user?.getIdToken();
     const config = { headers: { Authorization: "Bearer " + token } };
     const { data } = await axios.get(BASE_URL + "profile/posts", config);
-    setUserPostDataArray(data);
+    if (data) {
+      setUserPostDataArray(data);
+    }
   }, [user]);
 
   useEffect(() => {
@@ -26,6 +28,10 @@ export const ProfilePage = (): JSX.Element => {
   }, [getUserPostsData]);
 
   console.log("USER POSTS", userPostDataArray);
+
+  const handleFilter = (category: PostCategory) => {
+    console.log("trying to filter by", category);
+  };
 
   return (
     <div className="ProfilePageContainer">
@@ -40,11 +46,9 @@ export const ProfilePage = (): JSX.Element => {
       <div className="rightOfPage">
         <div className="createPostSettingsContainer">
           <h4>Category:</h4>
-          <button>Thought</button>
-          <br />
-          <button>Science</button>
-          <br />
-          <button>Art</button>
+          <button onClick={() => handleFilter("thought")}>Thought</button>
+          <button onClick={() => handleFilter("science")}>Science</button>
+          <button onClick={() => handleFilter("art")}>Art</button>
         </div>
       </div>
     </div>

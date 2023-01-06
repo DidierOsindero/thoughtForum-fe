@@ -1,15 +1,23 @@
-import { useRef } from "react";
-import { dummyData } from "../../../utils/dummyPostData";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { IPostData, BASE_URL } from "../../../App";
 import { PostsListView } from "../../templates/PostsListView";
 
 export const ArtPage = (): JSX.Element => {
-  const artDummyDatauseRef = useRef(
-    dummyData.filter((el) => el.category === "art")
-  );
+  const [postDataArray, setPostDataArray] = useState<IPostData[]>([]);
+  const getPostsData = async () => {
+    const { data } = await axios.get(BASE_URL + "posts/art");
+    setPostDataArray(data);
+  };
+
+  useEffect(() => {
+    getPostsData();
+  }, []);
+
   return (
     <div className="postsPageContainer">
       <h1 className="postsPageTitle">Art</h1>
-      <PostsListView postDataArray={artDummyDatauseRef.current} />
+      {postDataArray && <PostsListView postDataArray={postDataArray} />}
     </div>
   );
 };
