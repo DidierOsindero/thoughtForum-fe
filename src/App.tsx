@@ -34,10 +34,6 @@ export const BASE_URL =
 function App(): JSX.Element {
   //Console log new user details
   const [user, setUser] = useState<User | null>(null);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <div className="app">
       <UserContext.Provider value={{ user, setUser }}>
