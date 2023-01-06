@@ -11,7 +11,6 @@ export const NavBar = (): JSX.Element => {
   };
 
   const handSignInClicked = async () => {
-    console.log("Signing In User");
     const userCredential = await signInWithPopup(auth, googleAuthProvider);
     setUser(userCredential.user);
   };
