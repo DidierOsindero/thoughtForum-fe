@@ -14,9 +14,7 @@ export function MyPost({
   const postDate = postData.creation_date.slice(0, indexOfT);
 
   const handleDeletePost = async (postId: number) => {
-    const response = await axios.delete(
-      BASE_URL + "profile/posts?postid=" + postId
-    );
+    await axios.delete(BASE_URL + "profile/posts?postid=" + postId);
     getUserPostsData();
   };
 

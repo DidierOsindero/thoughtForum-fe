@@ -64,14 +64,13 @@ export const WritePage = (): JSX.Element => {
 
     //===========Check if current user has a displayName otherwise assign username to null=======
     const username = user?.displayName ? user.displayName : null;
-    const response = await axios.post(
+    await axios.post(
       BASE_URL + "write",
       //===========Send backend newPostData as well as user displayName=======
       { ...newPostData, username: username },
       config
     );
 
-    const createdPost = response.data;
     alert("Post Submitted");
     setNewPostData({
       img: placeholderImage,
