@@ -10,6 +10,7 @@ export type PostCategory = "thought" | "science" | "art";
 export type PostPrivacy = "public" | "private";
 export interface IPostData {
   user_id: string;
+  username: string;
   post_id: number;
   img: string;
   title: string;
@@ -22,8 +23,7 @@ export interface IPostData {
 
 export interface IUserData {
   userid: string;
-  first_name: string;
-  last_name: string;
+  username: string;
 }
 
 export const BASE_URL = "http://localhost:4000/";

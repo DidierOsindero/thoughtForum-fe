@@ -12,7 +12,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
       <img src={postData.img} alt="" className="postIMG" />
       <div className="postDetails">
         <p className="postUserName">
-          <i>John Bloggs</i>
+          <i>{postData.username && postData.username}</i>
         </p>
       </div>
       <div className="postTitle">
