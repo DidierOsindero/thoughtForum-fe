@@ -81,7 +81,6 @@ export const WritePage = (): JSX.Element => {
       privacy: null,
     });
     setImageURL(placeholderImage);
-    console.log("Created Post", createdPost);
   };
 
   if (user) {

@@ -18,7 +18,6 @@ export function MyPost({
       BASE_URL + "profile/posts?postid=" + postId
     );
     getUserPostsData();
-    console.log("Deleted Post:", response.data);
   };
 
   return (
