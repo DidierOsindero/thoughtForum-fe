@@ -19,7 +19,8 @@
     "type-check": "tsc --noEmit",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
+    "start-openssl": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build"
   },
   "browserslist": {
