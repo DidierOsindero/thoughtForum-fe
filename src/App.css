@@ -45,11 +45,10 @@ button:active {
 */
 
 .navBarList {
+  background-color: rgb(252, 252, 252);
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #333;
-  box-shadow: 5px 5px 15px -1px gray;
   flex: left;
   position: fixed;
   top: 0;
@@ -65,35 +64,28 @@ button:active {
   float: right;
 }
 
-.navBarItemText {
-  color: white;
+.navBarItemText,
+.dropbtn {
+  color: black;
   padding: 16px;
-  font-size: 16px;
+  font-size: 1.2rem;
   border: none;
   cursor: pointer;
 }
 
 .navBarItemText:hover,
 .dropdown:hover .dropbtn {
-  background-color: rgb(100, 100, 100);
+  color: rgb(135, 134, 134);
 }
 
 .navBarItemText:active,
 .dropdown:hover .dropbtn:active {
-  background-color: #134074;
+  color: rgb(111, 109, 109);
 }
 
 .navBarItemLink {
-  color: white;
+  color: black;
   text-decoration: none;
-}
-
-.dropbtn {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
 }
 
 .dropdown {
@@ -130,21 +122,12 @@ button:active {
 */
 
 .mainContentContainer {
-  padding: 15px;
   margin-top: 60px;
 }
 
 /*
 HOME_PAGE===============
 */
-
-.homePageContainer {
-  border: rgba(0, 0, 0, 0.2) 1px solid;
-  border-radius: 20px;
-  background-color: white;
-  overflow: hidden;
-  margin: auto 2%;
-}
 
 .welcomeMessageContainer {
   text-align: center;
@@ -153,7 +136,6 @@ HOME_PAGE===============
 }
 
 .featuredPostsContainer {
-  overflow: hidden;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -164,7 +146,7 @@ HOME_PAGE===============
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 20px;
   margin: 20px 40px;
-  max-width: 30%;
+  max-width: 40%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 200ms;
