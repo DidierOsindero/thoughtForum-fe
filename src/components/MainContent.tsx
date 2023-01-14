@@ -6,6 +6,7 @@ import { WritePage } from "./pages/WritePage";
 import { ThoughtPage } from "./pages/posts-pages/ThoughtPage";
 import { ArtPage } from "./pages/posts-pages/ArtPage";
 import { SciencePage } from "./pages/posts-pages/SciencePage";
+import { SinglePost } from "./pages/posts-pages/SinglePost";
 
 export const MainContent = (): JSX.Element => {
   return (
@@ -17,6 +18,7 @@ export const MainContent = (): JSX.Element => {
           <Route path="thought" element={<ThoughtPage />} />
           <Route path="art" element={<ArtPage />} />
           <Route path="science" element={<SciencePage />} />
+          <Route path=":id" element={<SinglePost />} />
         </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/write" element={<WritePage />} />
