@@ -355,3 +355,23 @@ POST===============
 /*
 ==============TEMPLATES===============
 */
+
+/*
+================POST PAGE =============
+*/
+.postPageContainer {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.postPageIMG {
+  border-radius: 5%;
+  height: 25rem;
+}
+
+.postPagePostContent {
+  text-align: left;
+  width: 70%;
+  margin: auto;
+}
