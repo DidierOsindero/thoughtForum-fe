@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL, IPostData } from "../../../App";
 import { convertTimeStampToDate } from "../../../utils/convertTimeStampToDate";
@@ -8,14 +8,15 @@ export const PostPage = (): JSX.Element => {
   const { id } = useParams();
 
   const [postData, setPostData] = useState<IPostData>();
-  const getPostsData = async () => {
+
+  const getPostsData = useCallback(async () => {
     const { data } = await axios.get(BASE_URL + "posts/" + id);
     setPostData(data[0]);
-  };
+  }, [setPostData, id]);
 
   useEffect(() => {
     getPostsData();
-  }, []);
+  }, [getPostsData]);
 
   if (postData) {
     return (
