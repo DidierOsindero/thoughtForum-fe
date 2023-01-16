@@ -21,19 +21,23 @@ export const PostPage = (): JSX.Element => {
   if (postData) {
     return (
       <div className="postPageContainer">
-        <img src={postData.img} alt="" className="postPageIMG" />
-        <div className="postPagePostDetails">
-          <p className="postPagePostUserName">
-            <i>{postData.username && postData.username}</i>
-          </p>
+        <div className="postPageLeftContainer">
+          <div className="postPagePostContainer">
+            <img src={postData.img} alt="" className="postPageIMG" />
+            <div className="postPagePostDetails">
+              <p className="postPagePostUserName">
+                <i>{postData.username && postData.username}</i>
+              </p>
+            </div>
+            <div className="postPageTitle">
+              <h3>{postData.title}</h3>
+            </div>
+            <p className="postPagePostContent">{postData.content}</p>
+            <p className="postPagePostDate">
+              <i>{convertTimeStampToDate(postData.creation_date)}</i>
+            </p>
+          </div>
         </div>
-        <div className="postPageTitle">
-          <h3>{postData.title}</h3>
-        </div>
-        <p className="postPagePostContent">{postData.content}</p>
-        <p className="postPagePostDate">
-          <i>{convertTimeStampToDate(postData.creation_date)}</i>
-        </p>
       </div>
     );
   } else {
