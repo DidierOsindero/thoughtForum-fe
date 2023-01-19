@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IPostData } from "../../../App";
 
 interface IRecommendedPost {
@@ -14,11 +15,13 @@ export const RecommendedPost = ({
           <img className="recommendedPostImg" src={postData.img} alt="" />
         </div>
         <div className="recommendedPostTitleAndTeaserContainer">
-          <span className="recommendedPostTitle">{postData.title} </span>
-          <br />
-          <span className="recommendedPostTeaser">
-            {postData.content.slice(0, 110)}...
-          </span>
+          <Link to={"/posts/" + postData.post_id}>
+            <span className="recommendedPostTitle">{postData.title} </span>
+            <br />
+            <span className="recommendedPostTeaser">
+              {postData.content.slice(0, 110)}...
+            </span>
+          </Link>
         </div>
       </div>
     </div>

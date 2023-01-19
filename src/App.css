@@ -420,8 +420,7 @@ POST===============
 /*
 ================RECOMMENDED POST =============
 */
-.recommendedPostsContainer {
-}
+
 .recommendedText {
   font-size: 2rem;
   font-weight: 700;
@@ -455,6 +454,11 @@ POST===============
 
 .recommendedPostTitleAndTeaserContainer {
   margin: auto;
+}
+
+.recommendedPostTitleAndTeaserContainer:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .recommendedPostTitle {
   font-weight: 600;
