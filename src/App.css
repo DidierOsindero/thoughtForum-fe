@@ -1,15 +1,19 @@
-@import url("https://fonts.googleapis.com/css?family=Handlee|Concert+One|Dosis");
+@import url("https://fonts.googleapis.com/css?family=Handlee|Concert+One|Dosis|Montserrat+Alternates|Lato");
 
 body {
   margin: 0px;
   background-color: rgb(252, 252, 252);
-  font-family: Dosis;
+  font-family: Lato;
+}
+
+p {
+  color: rgb(37, 37, 37);
 }
 
 input,
 button,
 textarea {
-  font-family: Dosis;
+  font-family: Lato;
 }
 
 input:focus {
@@ -50,7 +54,7 @@ a {
 */
 
 .navBarList {
-  background-color: rgb(252, 252, 252);
+  background-color: rgba(252, 252, 252, 0.704);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -76,6 +80,7 @@ a {
   font-size: 1.2rem;
   border: none;
   cursor: pointer;
+  font-family: Dosis;
 }
 
 .navBarItemText:hover,
@@ -101,7 +106,8 @@ a {
 .dropdownContent {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9e8;
+  font-family: Dosis;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -115,7 +121,7 @@ a {
 }
 
 .dropdownContent .dropdownItem:hover {
-  background-color: #f1f1f1;
+  background-color: #cecece5f;
 }
 
 .dropdown:hover .dropdownContent {
@@ -137,7 +143,22 @@ HOME_PAGE===============
 .welcomeMessageContainer {
   text-align: center;
   font-family: Concert One;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: #f2f2f2;
+  background-image: url("https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+.welcomeMessageContainer h1 {
+  padding: 20px;
+}
+
+.additional-message {
+  text-align: center;
+  font-family: Concert One;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.908);
 }
 
 .featuredPostsContainer {
@@ -151,7 +172,7 @@ HOME_PAGE===============
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 20px;
   margin: 20px 40px;
-  max-width: 40%;
+  max-width: 30%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 200ms;
@@ -366,7 +387,12 @@ POST===============
 .postPageLeftContainer {
   width: 70%;
   text-align: center;
-  border-right: solid 1px rgba(128, 128, 128, 0.497);
+  border-right: solid 1px rgba(128, 128, 128, 0.226);
+}
+
+.postPageRightContainer {
+  width: 30%;
+  text-align: center;
 }
 
 .postPagePostContainer {

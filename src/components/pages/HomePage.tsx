@@ -8,8 +8,10 @@ export const HomePage = (): JSX.Element => {
           Thought Forum!
           {<br />}{" "}
         </h1>
-        <h3>Write down your ideas and share them with others!</h3>
       </div>
+      <h3 className="additional-message">
+        Write down your ideas and share them with others!
+      </h3>
       <div className="featuredPostsContainer">
         <div className="featuredPost">
           <img
