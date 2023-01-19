@@ -19,7 +19,7 @@ export function Post({ postData }: IPostProps): JSX.Element {
         <div className="postTitle">
           <h3>{postData.title}</h3>
         </div>
-        <p className="postContent">{postData.content}</p>
+        <p className="postContent">{postData.content.slice(0, 200)}...</p>
         <p className="postDate">
           <i>{convertTimeStampToDate(postData.creation_date)}</i>
         </p>
