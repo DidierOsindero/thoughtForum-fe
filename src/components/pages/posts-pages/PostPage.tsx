@@ -3,20 +3,35 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL, IPostData } from "../../../App";
 import { convertTimeStampToDate } from "../../../utils/convertTimeStampToDate";
+import { RecommendedPost } from "./RecommendedPost";
 
 export const PostPage = (): JSX.Element => {
   const { id } = useParams();
 
   const [postData, setPostData] = useState<IPostData>();
+  const [recommendedPostData, setRecommendedPostData] = useState<IPostData[]>(
+    []
+  );
 
-  const getPostsData = useCallback(async () => {
+  const getPostData = useCallback(async () => {
     const { data } = await axios.get(BASE_URL + "posts/" + id);
     setPostData(data[0]);
   }, [setPostData, id]);
 
+  const getRecommendedPostsData = useCallback(async () => {
+    const { data } = await axios.get(
+      BASE_URL + "posts/recommend/" + postData?.category
+    );
+    setRecommendedPostData(data);
+  }, [postData]);
+
   useEffect(() => {
-    getPostsData();
-  }, [getPostsData]);
+    getPostData();
+  }, [getPostData]);
+
+  useEffect(() => {
+    getRecommendedPostsData();
+  }, [postData, getRecommendedPostsData]);
 
   if (postData) {
     return (
@@ -36,6 +51,17 @@ export const PostPage = (): JSX.Element => {
             <p className="postPagePostDate">
               <i>{convertTimeStampToDate(postData.creation_date)}</i>
             </p>
+          </div>
+        </div>
+        <div className="postPageRightContainer">
+          <div className="recommendedPostsContainer">
+            {recommendedPostData.map((postData) => {
+              return (
+                <div key={postData.post_id}>
+                  <RecommendedPost postData={postData} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
