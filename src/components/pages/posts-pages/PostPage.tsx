@@ -55,6 +55,7 @@ export const PostPage = (): JSX.Element => {
         </div>
         <div className="postPageRightContainer">
           <div className="recommendedPostsContainer">
+            <p className="recommendedText">Recommended:</p>
             {recommendedPostData.map((postData) => {
               return (
                 <div key={postData.post_id}>

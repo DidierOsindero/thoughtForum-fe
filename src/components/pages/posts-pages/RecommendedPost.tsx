@@ -9,9 +9,18 @@ export const RecommendedPost = ({
 }: IRecommendedPost): JSX.Element => {
   return (
     <div className="recommendedPostContainer">
-      <img className="recommendedPostImg" src={postData.img} />
-      <p className="recommendedPostTitle">{postData.title}</p>
-      <p className="recommendedPostTeaser">{postData.content}</p>
+      <div className="recommendedPostGrid">
+        <div className="recommendedPostImgContainer">
+          <img className="recommendedPostImg" src={postData.img} alt="" />
+        </div>
+        <div className="recommendedPostTitleAndTeaserContainer">
+          <span className="recommendedPostTitle">{postData.title} </span>
+          <br />
+          <span className="recommendedPostTeaser">
+            {postData.content.slice(0, 110)}...
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
