@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { auth, googleAuthProvider } from "../configureFirebase";
 import { signInWithPopup, User } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../context";
 
 export const NavBar = (): JSX.Element => {
@@ -20,6 +20,15 @@ export const NavBar = (): JSX.Element => {
     setUser(null);
     alert("You have been signed-out");
   };
+
+  useEffect(() => {
+    function handleAuthStateChange(user: User | null) {
+      setUser(user);
+    }
+
+    const unsubscribeFn = auth.onAuthStateChanged(handleAuthStateChange);
+    return unsubscribeFn;
+  }, [setUser]);
 
   return (
     <>

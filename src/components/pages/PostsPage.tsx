@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 
 export const PostsPage = (): JSX.Element => {
   const [postDataArray, setPostDataArray] = useState<IPostData[]>([]);
+
   const getPostsData = async () => {
+    console.log("START getPostsData");
     const { data } = await axios.get(BASE_URL + "posts");
+    console.log("FINISH getPostsData");
     setPostDataArray(data);
   };
 
