@@ -13,25 +13,50 @@ export const PostPage = (): JSX.Element => {
     []
   );
 
-  const getPostData = useCallback(async () => {
-    const { data } = await axios.get(BASE_URL + "posts/" + id);
-    setPostData(data[0]);
-  }, [setPostData, id]);
+  // const getPostData = useCallback(async () => {
+  //   const { data } = await axios.get(BASE_URL + "posts/" + id);
+  //   setPostData(data[0]);
+  // }, [id]);
 
-  const getRecommendedPostsData = useCallback(async () => {
-    const { data } = await axios.get(
-      BASE_URL + "posts/recommend/" + postData?.category
-    );
-    setRecommendedPostData(data);
-  }, [postData]);
+  // const getRecommendedPostsData = useCallback(async () => {
+  //   const { data } = await axios.get(
+  //     BASE_URL + "posts/recommend/" + postData?.category
+  //   );
+  //   setRecommendedPostData(data);
+  // }, [postData]);
+
+  // useEffect(() => {
+  //   console.log("START GET current post data", new Date());
+  //   getPostData();
+  //   console.log("FINISH GET current post data", new Date());
+  // }, [getPostData]);
+
+  // useEffect(() => {
+  //   console.log("START GET recommended posts", new Date());
+  //   getRecommendedPostsData();
+  //   console.log("FINISH GET recommended posts", new Date());
+  // }, [getRecommendedPostsData]);
+
+  const getPostsAndRecommendedPostsData = useCallback(async () => {
+    try {
+      const responseCurrentPost = await axios.get(BASE_URL + "posts/" + id);
+      const currentPostData: IPostData = responseCurrentPost.data[0];
+      setPostData(currentPostData);
+      const responseRecommendedPosts = await axios.get(
+        BASE_URL + "posts/recommend/" + currentPostData.category + "/" + id
+      );
+      const recommendPostArr = responseRecommendedPosts.data;
+      setRecommendedPostData(recommendPostArr);
+    } catch (error) {
+      console.error("There was an error fetching data for this page:", error);
+    }
+  }, [id]);
 
   useEffect(() => {
-    getPostData();
-  }, [getPostData]);
-
-  useEffect(() => {
-    getRecommendedPostsData();
-  }, [postData, getRecommendedPostsData]);
+    console.log("START getPostsAndRecommendedPostsData", new Date());
+    getPostsAndRecommendedPostsData();
+    console.log("FINISH getPostsAndRecommendedPostsData", new Date());
+  }, [getPostsAndRecommendedPostsData]);
 
   if (postData) {
     return (
@@ -56,13 +81,14 @@ export const PostPage = (): JSX.Element => {
         <div className="postPageRightContainer">
           <div className="recommendedPostsContainer">
             <p className="recommendedText">Recommended:</p>
-            {recommendedPostData.map((postData) => {
-              return (
-                <div key={postData.post_id}>
-                  <RecommendedPost postData={postData} />
-                </div>
-              );
-            })}
+            {recommendedPostData.length > 0 &&
+              recommendedPostData.map((postData) => {
+                return (
+                  <div key={postData.post_id}>
+                    <RecommendedPost postData={postData} />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
