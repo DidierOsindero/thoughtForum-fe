@@ -470,3 +470,14 @@ POST===============
   text-overflow: ellipsis;
   font-size: 0.9rem;
 }
+
+/*
+=======LOADING=======
+*/
+
+.ctn-loading-triangle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+}

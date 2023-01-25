@@ -13,30 +13,6 @@ export const PostPage = (): JSX.Element => {
     []
   );
 
-  // const getPostData = useCallback(async () => {
-  //   const { data } = await axios.get(BASE_URL + "posts/" + id);
-  //   setPostData(data[0]);
-  // }, [id]);
-
-  // const getRecommendedPostsData = useCallback(async () => {
-  //   const { data } = await axios.get(
-  //     BASE_URL + "posts/recommend/" + postData?.category
-  //   );
-  //   setRecommendedPostData(data);
-  // }, [postData]);
-
-  // useEffect(() => {
-  //   console.log("START GET current post data", new Date());
-  //   getPostData();
-  //   console.log("FINISH GET current post data", new Date());
-  // }, [getPostData]);
-
-  // useEffect(() => {
-  //   console.log("START GET recommended posts", new Date());
-  //   getRecommendedPostsData();
-  //   console.log("FINISH GET recommended posts", new Date());
-  // }, [getRecommendedPostsData]);
-
   const getPostsAndRecommendedPostsData = useCallback(async () => {
     try {
       const responseCurrentPost = await axios.get(BASE_URL + "posts/" + id);
