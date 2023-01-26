@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL, IPostData } from "../../../App";
 import { convertTimeStampToDate } from "../../../utils/convertTimeStampToDate";
-import { RecommendedPost } from "./RecommendedPost";
+import { RecommendedPost } from "../../templates/RecommendedPost";
 
 export const PostPage = (): JSX.Element => {
   const { id } = useParams();
