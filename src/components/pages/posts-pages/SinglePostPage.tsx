@@ -5,7 +5,7 @@ import { BASE_URL, IPostData } from "../../../App";
 import { convertTimeStampToDate } from "../../../utils/convertTimeStampToDate";
 import { RecommendedPost } from "../../templates/RecommendedPost";
 
-export const PostPage = (): JSX.Element => {
+export const SinglePostPage = (): JSX.Element => {
   const { id } = useParams();
 
   const [postData, setPostData] = useState<IPostData>();
