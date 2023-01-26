@@ -1,5 +1,5 @@
 import { HomePage } from "./pages/HomePage";
-import { PostsPage } from "./pages/PostsPage";
+import { PostsPage } from "./pages/posts-pages/PostsPage";
 import { Route, Routes } from "react-router-dom";
 import { ProfilePage } from "./pages/ProfilePage";
 import { WritePage } from "./pages/WritePage";
