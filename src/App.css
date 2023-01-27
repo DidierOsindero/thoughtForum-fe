@@ -168,26 +168,23 @@ HOME_PAGE===============
 }
 
 .featuredPost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  border: rgba(0, 0, 0, 0.2) 1px solid;
-  border-radius: 20px;
   margin: 20px 40px;
-  max-width: 30%;
+  width: 100%;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 200ms;
 }
 
-.featuredPost:hover {
-  box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
-}
-
 .featuredPostIMG {
-  width: 100%;
+  width: 20rem;
 }
 
 .featuredPostContent {
-  text-align: left;
+  text-align: center;
   padding: 18px;
 }
 
@@ -332,8 +329,17 @@ POST===============
   box-shadow: rgba(0, 0, 0, 0.641) 0px 1px 7px;
 }
 
-.postIMG {
+.ctnPostIMG {
   width: 100%;
+  height: 20rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postIMG {
+  min-height: 100%;
 }
 
 .postContent {
@@ -480,4 +486,62 @@ POST===============
   justify-content: center;
   align-items: center;
   margin-top: 20vh;
+}
+
+/*
+=======THOUGHT BUBBLE=======
+*/
+
+.ctn-food-for-thought {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #81b494;
+}
+.food-for-thought-txt {
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  font-family: Concert One;
+  font-size: 2rem;
+  color: #71a2b2;
+}
+
+.thought {
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 30px;
+  min-width: 40px;
+  max-width: 70%;
+  min-height: 40px;
+  margin: 60px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.thought:before,
+.thought:after {
+  content: "";
+  background-color: #fff;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  z-index: 0;
+}
+.thought:before {
+  width: 44px;
+  height: 44px;
+  top: -12px;
+  left: 28px;
+  box-shadow: -50px 30px 0 -12px #fff;
+}
+.thought:after {
+  bottom: -10px;
+  right: 26px;
+  width: 30px;
+  height: 30px;
+  box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
+    -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
 }

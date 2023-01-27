@@ -20,7 +20,9 @@ export function MyPost({
 
   return (
     <div className="post">
-      <img src={postData.img} alt="" className="postIMG" />
+      <div className="ctnPostIMG">
+        <img src={postData.img} alt="" className="postIMG" />
+      </div>
       <p className="postDate">
         <i>{postDate}</i>
       </p>
