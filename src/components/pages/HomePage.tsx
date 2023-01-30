@@ -37,13 +37,16 @@ export const HomePage = (): JSX.Element => {
 
       <div className="ctn-food-for-thought">
         <div className="thought">
-          <h3 className="food-for-thought-txt">
+          <p className="food-for-thought-txt">
+            <b className="food-for-thought-title">Food for Thought</b>
+            <br />
+            <br />
             "All the world's a stage, and all the men and women merely players.
             They have their exits and their entrances; and one man in his time
             plays many parts." <br />
             <br />
-            <i>Shakespeare</i>
-          </h3>
+            <i className="food-for-thought-author">William Shakespeare</i>
+          </p>
         </div>
       </div>
     </div>

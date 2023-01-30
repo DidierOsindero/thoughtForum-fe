@@ -469,7 +469,7 @@ POST===============
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #81b494;
+  background-color: #cacaca00;
 }
 .food-for-thought-txt {
   margin: auto;
@@ -477,12 +477,20 @@ POST===============
   text-align: center;
   font-family: Concert One;
   font-size: 2rem;
-  color: #71a2b2;
+  color: rgb(255, 255, 255);
+}
+
+.food-for-thought-title {
+  font-size: 3rem;
+  text-decoration: underline;
+}
+.food-for-thought-author {
+  font-size: 1.5rem;
 }
 
 .thought {
   display: flex;
-  background-color: #fff;
+  background-color: rgb(166, 222, 180);
   padding: 20px;
   border-radius: 30px;
   min-width: 40px;
@@ -497,7 +505,7 @@ POST===============
 .thought:before,
 .thought:after {
   content: "";
-  background-color: #fff;
+  background-color: rgb(166, 222, 180);
   border-radius: 50%;
   display: block;
   position: absolute;
@@ -508,13 +516,14 @@ POST===============
   height: 44px;
   top: -12px;
   left: 28px;
-  box-shadow: -50px 30px 0 -12px #fff;
+  box-shadow: -50px 30px 0 -12px rgb(166, 222, 180);
 }
 .thought:after {
   bottom: -10px;
   right: 26px;
   width: 30px;
   height: 30px;
-  box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
-    -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
+  box-shadow: 40px -34px 0 0 rgb(166, 222, 180),
+    -28px -6px 0 -2px rgb(166, 222, 180), -24px 17px 0 -6px rgb(166, 222, 180),
+    -5px 25px 0 -10px rgb(166, 222, 180);
 }
