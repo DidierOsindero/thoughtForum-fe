@@ -161,33 +161,6 @@ HOME_PAGE===============
   color: rgba(0, 0, 0, 0.908);
 }
 
-.featuredPostsContainer {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.featuredPost {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin: 20px 40px;
-  width: 100%;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  transition: 200ms;
-}
-
-.featuredPostIMG {
-  width: 20rem;
-}
-
-.featuredPostContent {
-  text-align: center;
-  padding: 18px;
-}
-
 /*
 POSTS_PAGE===============
 */
