@@ -21,7 +21,7 @@ export const ProfilePage = (): JSX.Element => {
     setIsLoading(true);
     const token = await user?.getIdToken();
     const config = { headers: { Authorization: "Bearer " + token } };
-    const { data } = await axios.get(BASE_URL + "profile/posts", config);
+    const { data } = await axios.get(BASE_URL + "posts/profile", config);
     setIsLoading(false);
     if (data) {
       setUserPostDataArray(data);
