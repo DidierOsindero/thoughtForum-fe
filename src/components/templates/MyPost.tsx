@@ -14,13 +14,15 @@ export function MyPost({
   const postDate = postData.creation_date.slice(0, indexOfT);
 
   const handleDeletePost = async (postId: number) => {
-    await axios.delete(BASE_URL + "profile/posts?postid=" + postId);
+    await axios.delete(BASE_URL + "posts/profile?postid=" + postId);
     getUserPostsData();
   };
 
   return (
     <div className="post">
-      <img src={postData.img} alt="" className="postIMG" />
+      <div className="ctnPostIMG">
+        <img src={postData.img} alt="" className="postIMG" />
+      </div>
       <p className="postDate">
         <i>{postDate}</i>
       </p>

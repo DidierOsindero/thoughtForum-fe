@@ -1,6 +1,6 @@
-import { PostsListView } from "../templates/PostsListView";
+import { PostsListView } from "../../templates/PostsListView";
 import axios from "axios";
-import { BASE_URL, IPostData } from "../../App";
+import { BASE_URL, IPostData } from "../../../App";
 import { useEffect, useState } from "react";
 import { Triangle } from "react-loader-spinner";
 

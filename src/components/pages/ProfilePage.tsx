@@ -5,6 +5,7 @@ import { IPostData, BASE_URL, PostCategory } from "../../App";
 import { UserContext } from "../../context";
 import { filterPostsByCategory } from "../../utils/filterPostsByCategory";
 import { MyPostsListView } from "../templates/MyPostsListView";
+import { Triangle } from "react-loader-spinner";
 
 export const ProfilePage = (): JSX.Element => {
   //GET user from context
@@ -14,11 +15,14 @@ export const ProfilePage = (): JSX.Element => {
   };
 
   const [userPostDataArray, setUserPostDataArray] = useState<IPostData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getUserPostsData = useCallback(async () => {
+    setIsLoading(true);
     const token = await user?.getIdToken();
     const config = { headers: { Authorization: "Bearer " + token } };
-    const { data } = await axios.get(BASE_URL + "profile/posts", config);
+    const { data } = await axios.get(BASE_URL + "posts/profile", config);
+    setIsLoading(false);
     if (data) {
       setUserPostDataArray(data);
     }
@@ -38,8 +42,13 @@ export const ProfilePage = (): JSX.Element => {
       <div className="leftOfPage">
         {filterPostsByCategory(userPostDataArray, currentFilterCategory)
           .length < 1 &&
+          isLoading === false &&
           userPostDataArray.length > 0 && <h3>No posts in this category</h3>}
-        {userPostDataArray.length < 1 && <h3>No posts</h3>}
+
+        {userPostDataArray.length < 1 && isLoading === false && (
+          <h3>No posts</h3>
+        )}
+
         <MyPostsListView
           postDataArray={filterPostsByCategory(
             userPostDataArray,
@@ -62,6 +71,19 @@ export const ProfilePage = (): JSX.Element => {
           <button onClick={() => setCurrentFilterCategory("art")}>Art</button>
         </div>
       </div>
+
+      {isLoading && (
+        <div className="ctn-loading-triangle">
+          <Triangle
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="triangle-loading"
+            wrapperClass="loading-triangle"
+            visible={true}
+          />
+        </div>
+      )}
     </div>
   );
 };

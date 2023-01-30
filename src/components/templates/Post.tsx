@@ -10,7 +10,9 @@ export function Post({ postData }: IPostProps): JSX.Element {
   return (
     <div className="post">
       <Link to={"/posts/" + postData.post_id}>
-        <img src={postData.img} alt="" className="postIMG" />
+        <div className="ctnPostIMG">
+          <img src={postData.img} alt="" className="postIMG" />
+        </div>
         <div className="postDetails">
           <p className="postUserName">
             <i>{postData.username && postData.username}</i>
