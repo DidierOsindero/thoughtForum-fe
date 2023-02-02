@@ -2,7 +2,7 @@ import axios from "axios";
 import { User } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import { PostCategory, PostPrivacy, BASE_URL } from "../App";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../context/UserContext";
 
 interface INewPostData {
   img: string | null;

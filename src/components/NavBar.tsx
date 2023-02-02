@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { auth, googleAuthProvider } from "../configureFirebase";
 import { signInWithPopup, User } from "firebase/auth";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../context/UserContext";
 
 export const NavBar = (): JSX.Element => {
   const { user, setUser } = useContext(UserContext) as {
