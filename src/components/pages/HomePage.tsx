@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BASE_URL, IPostData } from "../../App";
-import { Post } from "../templates/Post";
+import { Post } from "../components/Post";
 
 export const HomePage = (): JSX.Element => {
   const [featuredPostsArr, setFeaturedPostsArr] = useState<IPostData[]>([]);

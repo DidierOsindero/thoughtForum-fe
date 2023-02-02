@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IPostData, BASE_URL } from "../../../App";
-import { PostsListView } from "../../templates/PostsListView";
+import { PostsListView } from "../../components/PostsListView";
 import { Triangle } from "react-loader-spinner";
 
 export const ArtPage = (): JSX.Element => {

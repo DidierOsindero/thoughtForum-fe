@@ -4,7 +4,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { IPostData, BASE_URL, PostCategory } from "../../App";
 import { UserContext } from "../../context";
 import { filterPostsByCategory } from "../../utils/filterPostsByCategory";
-import { MyPostsListView } from "../templates/MyPostsListView";
+import { MyPostsListView } from "../components/MyPostsListView";
 import { Triangle } from "react-loader-spinner";
 
 export const ProfilePage = (): JSX.Element => {
