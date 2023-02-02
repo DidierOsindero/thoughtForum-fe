@@ -1,9 +1,9 @@
 import axios from "axios";
 import { User } from "firebase/auth";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { IPostData, BASE_URL, PostCategory } from "../../App";
-import { UserContext } from "../../context";
-import { filterPostsByCategory } from "../../utils/filterPostsByCategory";
+import { IPostData, BASE_URL, PostCategory } from "../App";
+import { UserContext } from "../UserContext";
+import { filterPostsByCategory } from "../utils/filterPostsByCategory";
 import { MyPostsListView } from "../components/MyPostsListView";
 import { Triangle } from "react-loader-spinner";
 

@@ -1,16 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { IPostData, BASE_URL } from "../../../App";
 import { PostsListView } from "../../components/PostsListView";
+import axios from "axios";
+import { BASE_URL, IPostData } from "../../App";
+import { useEffect, useState } from "react";
 import { Triangle } from "react-loader-spinner";
 
-export const ThoughtPage = (): JSX.Element => {
+export const PostsPage = (): JSX.Element => {
   const [postDataArray, setPostDataArray] = useState<IPostData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getPostsData = async () => {
     setIsLoading(true);
-    const { data } = await axios.get(BASE_URL + "posts/thought");
+    const { data } = await axios.get(BASE_URL + "posts");
     setIsLoading(false);
     setPostDataArray(data);
   };
@@ -21,7 +21,7 @@ export const ThoughtPage = (): JSX.Element => {
 
   return (
     <div className="postsPageContainer">
-      <h1 className="postsPageTitle">Thought</h1>
+      <h1 className="postsPageTitle">All Posts</h1>
       {isLoading && (
         <div className="ctn-loading-triangle">
           <Triangle

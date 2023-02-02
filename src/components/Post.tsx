@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { IPostData } from "../../App";
-import { convertTimeStampToDate } from "../../utils/convertTimeStampToDate";
+import { IPostData } from "../App";
+import { convertTimeStampToDate } from "../utils/convertTimeStampToDate";
 
 export interface IPostProps {
   postData: IPostData;

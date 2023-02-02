@@ -1,12 +1,12 @@
-import { HomePage } from "./pages/HomePage";
-import { PostsPage } from "./pages/posts-pages/PostsPage";
+import { HomePage } from "../pages/HomePage";
+import { PostsPage } from "../pages/posts-pages/PostsPage";
 import { Route, Routes } from "react-router-dom";
-import { ProfilePage } from "./pages/ProfilePage";
-import { WritePage } from "./pages/WritePage";
-import { ThoughtPage } from "./pages/posts-pages/ThoughtPage";
-import { ArtPage } from "./pages/posts-pages/ArtPage";
-import { SciencePage } from "./pages/posts-pages/SciencePage";
-import { SinglePostPage } from "./pages/posts-pages/SinglePostPage";
+import { ProfilePage } from "../pages/ProfilePage";
+import { WritePage } from "../pages/WritePage";
+import { ThoughtPage } from "../pages/posts-pages/ThoughtPage";
+import { ArtPage } from "../pages/posts-pages/ArtPage";
+import { SciencePage } from "../pages/posts-pages/SciencePage";
+import { SinglePostPage } from "../pages/posts-pages/SinglePostPage";
 
 export const MainContent = (): JSX.Element => {
   return (

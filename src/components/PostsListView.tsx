@@ -1,4 +1,4 @@
-import { IPostData } from "../../App";
+import { IPostData } from "../App";
 import { Post } from "./Post";
 export interface IPostsListViewProps {
   postDataArray: IPostData[];

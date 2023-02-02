@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, IPostData } from "../../App";
+import { BASE_URL, IPostData } from "../App";
 
 export interface IMyPostProps {
   postData: IPostData;

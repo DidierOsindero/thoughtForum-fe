@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { BASE_URL, IPostData } from "../../../App";
-import { convertTimeStampToDate } from "../../../utils/convertTimeStampToDate";
+import { BASE_URL, IPostData } from "../../App";
+import { convertTimeStampToDate } from "../../utils/convertTimeStampToDate";
 import { RecommendedPost } from "../../components/RecommendedPost";
 
 export const SinglePostPage = (): JSX.Element => {
