@@ -21,25 +21,25 @@ export function MyPost({
   return (
     <div className="ctn-post">
       <div className="ctn-post-img">
-        <img src={postData.img} alt="" className="postIMG" />
+        <img src={postData.img} alt="" className="post-img" />
       </div>
-      <p className="postDate">
+      <p className="post-date">
         <i>{postDate}</i>
       </p>
-      <div className="postTitle">
+      <div className="post-title">
         <h3>{postData.title}</h3>
       </div>
       <p>
         <i>{postData.category}</i>
       </p>
-      <p className="postContent">{postData.content}</p>
+      <p className="post-content">{postData.content}</p>
       <button
         className="delete-post-btn"
         onClick={() => handleDeletePost(postData.post_id)}
       >
         Delete
       </button>
-      <p className="userPostPrivacy">
+      <p className="user-post-privacy">
         <i>{postData.privacy}</i>
       </p>
     </div>

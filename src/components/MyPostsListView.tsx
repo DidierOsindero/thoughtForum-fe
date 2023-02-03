@@ -10,7 +10,7 @@ export function MyPostsListView({
   getUserPostsData,
 }: IMyPostsListViewProps): JSX.Element {
   return (
-    <div className="postsContainer">
+    <div className="ctn-posts">
       {postDataArray.map((postData) => {
         return (
           <MyPost

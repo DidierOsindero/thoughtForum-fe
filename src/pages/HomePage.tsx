@@ -29,7 +29,7 @@ export const HomePage = (): JSX.Element => {
         Write down your ideas and share them with others!
       </h3>
 
-      <div className="postsContainer">
+      <div className="ctn-posts">
         {featuredPostsArr.map((postData) => {
           return <Post postData={postData} key={postData.post_id} />;
         })}

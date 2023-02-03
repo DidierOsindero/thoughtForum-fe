@@ -169,7 +169,7 @@ POSTS_PAGE===============
   overflow: hidden;
 }
 
-.postsContainer {
+.ctn-posts {
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -311,11 +311,11 @@ POST===============
   align-items: center;
 }
 
-.postIMG {
+.post-img {
   min-height: 100%;
 }
 
-.postContent {
+.post-content {
   text-align: left;
   padding: 18px;
   padding-bottom: 30px;
@@ -327,18 +327,18 @@ POST===============
   margin-top: 0;
 }
 
-.userPostPrivacy,
-.postDate {
+.user-post-privacy,
+.post-date {
   font-size: 0.9rem;
 }
 
-.userPostPrivacy {
+.user-post-privacy {
   position: absolute;
   bottom: 0;
   right: 20px;
 }
 
-.postDate {
+.post-date {
   position: absolute;
   bottom: 0;
   left: 20px;
