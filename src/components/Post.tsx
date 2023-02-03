@@ -8,7 +8,7 @@ export interface IPostProps {
 
 export function Post({ postData }: IPostProps): JSX.Element {
   return (
-    <div className="post">
+    <div className="ctn-post">
       <Link to={"/posts/" + postData.post_id}>
         <div className="ctnPostIMG">
           <img src={postData.img} alt="" className="postIMG" />

@@ -19,7 +19,7 @@ export function MyPost({
   };
 
   return (
-    <div className="post">
+    <div className="ctn-post">
       <div className="ctnPostIMG">
         <img src={postData.img} alt="" className="postIMG" />
       </div>
