@@ -10,7 +10,7 @@ import { SinglePostPage } from "../pages/posts-pages/SinglePostPage";
 
 export const MainContent = (): JSX.Element => {
   return (
-    <div className="mainContentContainer">
+    <div className="ctn-main-content">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/posts">

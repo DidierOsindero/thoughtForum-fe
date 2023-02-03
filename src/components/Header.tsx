@@ -2,7 +2,7 @@ import { NavBar } from "./NavBar";
 
 export const Header = (): JSX.Element => {
   return (
-    <div className="headerContainer">
+    <div className="ctn-header">
       <div>
         <NavBar />
       </div>

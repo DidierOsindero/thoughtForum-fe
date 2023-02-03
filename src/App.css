@@ -132,7 +132,7 @@ a {
 ==================MAIN_CONTENT===============
 */
 
-.mainContentContainer {
+.ctn-main-content {
   margin-top: 60px;
 }
 
@@ -347,7 +347,7 @@ POST===============
 ==============FOOTER===============
 */
 
-.footerContainer {
+.ctn-footer {
   text-align: center;
   clear: left;
 }
