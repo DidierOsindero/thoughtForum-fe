@@ -29,9 +29,7 @@ export const SinglePostPage = (): JSX.Element => {
   }, [id]);
 
   useEffect(() => {
-    console.log("START getPostsAndRecommendedPostsData", new Date());
     getPostsAndRecommendedPostsData();
-    console.log("FINISH getPostsAndRecommendedPostsData", new Date());
   }, [getPostsAndRecommendedPostsData]);
 
   if (postData) {
