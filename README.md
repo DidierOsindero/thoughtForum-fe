@@ -24,6 +24,7 @@ Through this project I learned about user authentication with Firebase, the useC
 <br/>
 <b>🚨Please Note</b> - *Certain page elements may take a few seconds to load on the first render due to the backend hosting site requiring some time to 'wake-up' the server.*
 <hr />
+<br/>
 
 ## <b>Running The Project Locally💻</b>
 
