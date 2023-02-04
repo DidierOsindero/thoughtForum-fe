@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IPostData } from "../../App";
+import { IPostData } from "../App";
 
 interface IRecommendedPost {
   postData: IPostData;

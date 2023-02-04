@@ -2,7 +2,7 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { MainContent } from "./components/MainContent";
 import { Footer } from "./components/Footer";
-import { UserContext } from "./context";
+import { UserContext } from "./context/UserContext";
 import { useState } from "react";
 import { User } from "firebase/auth";
 

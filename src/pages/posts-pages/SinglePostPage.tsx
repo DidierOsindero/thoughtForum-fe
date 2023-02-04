@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { BASE_URL, IPostData } from "../../../App";
-import { convertTimeStampToDate } from "../../../utils/convertTimeStampToDate";
-import { RecommendedPost } from "../../templates/RecommendedPost";
+import { BASE_URL, IPostData } from "../../App";
+import { convertTimeStampToDate } from "../../utils/convertTimeStampToDate";
+import { RecommendedPost } from "../../components/RecommendedPost";
 
 export const SinglePostPage = (): JSX.Element => {
   const { id } = useParams();
@@ -29,9 +29,7 @@ export const SinglePostPage = (): JSX.Element => {
   }, [id]);
 
   useEffect(() => {
-    console.log("START getPostsAndRecommendedPostsData", new Date());
     getPostsAndRecommendedPostsData();
-    console.log("FINISH getPostsAndRecommendedPostsData", new Date());
   }, [getPostsAndRecommendedPostsData]);
 
   if (postData) {
