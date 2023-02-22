@@ -12,9 +12,6 @@ export function MyPost({
   postData,
   getUserPostsData,
 }: IMyPostProps): JSX.Element {
-  const indexOfT = postData.creation_date.indexOf("T");
-  const postDate = postData.creation_date.slice(0, indexOfT);
-
   const handleDeletePost = async (postId: number) => {
     await axios.delete(BASE_URL + "posts/profile?postid=" + postId);
     getUserPostsData();
@@ -26,11 +23,7 @@ export function MyPost({
         <div className="ctn-post-img">
           <img src={postData.img} alt="" className="post-img" />
         </div>
-        <div className="postDetails">
-          <p className="postUserName">
-            <i>{postData.username && postData.username}</i>
-          </p>
-        </div>
+        <div className="postDetails"></div>
         <div className="post-title">
           <h3>{postData.title}</h3>
         </div>
