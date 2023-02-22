@@ -31,16 +31,16 @@ export function MyPost({
         <p className="post-date">
           <i>{convertTimeStampToDate(postData.creation_date)}</i>
         </p>
-        <button
-          className="delete-post-btn"
-          onClick={() => handleDeletePost(postData.post_id)}
-        >
-          Delete
-        </button>
         <p className="user-post-privacy">
           <i>{postData.privacy}</i>
         </p>
       </Link>
+      <button
+        className="delete-post-btn"
+        onClick={() => handleDeletePost(postData.post_id)}
+      >
+        Delete
+      </button>
     </div>
   );
 }

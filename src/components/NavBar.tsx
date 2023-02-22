@@ -3,8 +3,12 @@ import { auth, googleAuthProvider } from "../configureFirebase";
 import { signInWithPopup, User } from "firebase/auth";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
+import { toast } from "react-toastify";
 
 export const NavBar = (): JSX.Element => {
+  //Define Toast
+  const signedOutNotif = () => toast("You have been signed-out ✅");
+
   const { user, setUser } = useContext(UserContext) as {
     user: User | null;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -18,7 +22,7 @@ export const NavBar = (): JSX.Element => {
   const handSignOutClicked = async () => {
     auth.signOut();
     setUser(null);
-    alert("You have been signed-out");
+    signedOutNotif();
   };
 
   useEffect(() => {
