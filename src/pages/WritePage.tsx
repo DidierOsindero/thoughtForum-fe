@@ -3,6 +3,7 @@ import { User } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import { PostCategory, PostPrivacy, BASE_URL } from "../App";
 import { UserContext } from "../context/UserContext";
+import { toast } from "react-toastify";
 
 interface INewPostData {
   img: string | null;
@@ -13,6 +14,9 @@ interface INewPostData {
 }
 
 export const WritePage = (): JSX.Element => {
+  //Define Toast
+  const notify = () => toast("You just uploaded a new post✨");
+
   //Image Address for placeholder image
   const placeholderImage =
     "https://images.unsplash.com/photo-1635352723068-ffb3b922397f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGluc2VydCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60";
@@ -71,7 +75,7 @@ export const WritePage = (): JSX.Element => {
       config
     );
 
-    alert("Post Submitted");
+    notify();
     setNewPostData({
       img: placeholderImage,
       title: "",

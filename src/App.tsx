@@ -5,6 +5,8 @@ import { Footer } from "./components/Footer";
 import { UserContext } from "./context/UserContext";
 import { useState } from "react";
 import { User } from "firebase/auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export type PostCategory = "thought" | "science" | "art";
 export type PostPrivacy = "public" | "private";
@@ -40,6 +42,7 @@ function App(): JSX.Element {
         <Header />
         <MainContent />
         <Footer />
+        <ToastContainer />
       </UserContext.Provider>
     </div>
   );
