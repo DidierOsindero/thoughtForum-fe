@@ -15,7 +15,7 @@ interface INewPostData {
 
 export const WritePage = (): JSX.Element => {
   //Define Toast
-  const notify = () => toast("You just uploaded a new post✨");
+  const postUploadedNotif = () => toast("You just uploaded a new post✨");
 
   //Image Address for placeholder image
   const placeholderImage =
@@ -75,7 +75,7 @@ export const WritePage = (): JSX.Element => {
       config
     );
 
-    notify();
+    postUploadedNotif();
     setNewPostData({
       img: placeholderImage,
       title: "",
