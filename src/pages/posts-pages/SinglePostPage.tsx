@@ -20,17 +20,26 @@ export const SinglePostPage = (): JSX.Element => {
 
   const getPostsAndRecommendedPostsData = useCallback(async () => {
     try {
+      //----------------------------------------------------------------------get post data for current post
       const responseCurrentPost = await axios.get(BASE_URL + "posts/" + id);
       const currentPostData: IPostData = responseCurrentPost.data[0];
       setPostData(currentPostData);
 
-      const token = await user?.getIdToken();
-      const config = { headers: { Authorization: "Bearer " + token } };
-
-      const responseRecommendedPosts = await axios.get(
-        BASE_URL + "posts/recommend/" + currentPostData.category + "/" + id,
-        config
-      );
+      //----------------------------------------------------------------------get post data for recommended posts
+      let responseRecommendedPosts;
+      //check if there is a User signed in, if so, send user token in GET request
+      if (user) {
+        const token = await user?.getIdToken();
+        const config = { headers: { Authorization: "Bearer " + token } };
+        responseRecommendedPosts = await axios.get(
+          BASE_URL + "posts/recommend/" + currentPostData.category + "/" + id,
+          config
+        );
+      } else {
+        responseRecommendedPosts = await axios.get(
+          BASE_URL + "posts/recommend/" + currentPostData.category + "/" + id
+        );
+      }
       const recommendPostArr = responseRecommendedPosts.data;
       setRecommendedPostData(recommendPostArr);
     } catch (error) {
