@@ -6,6 +6,8 @@ import { convertTimeStampToDate } from "../../utils/convertTimeStampToDate";
 import { RecommendedPost } from "../../components/RecommendedPost";
 import { User } from "firebase/auth";
 import { UserContext } from "../../context/UserContext";
+import { Comments } from "../../components/Comments";
+import "./SinglePostsPage.css";
 
 export const SinglePostPage = (): JSX.Element => {
   const { id } = useParams();
@@ -69,6 +71,8 @@ export const SinglePostPage = (): JSX.Element => {
             <p className="postPagePostDate">
               <i>{convertTimeStampToDate(postData.creation_date)}</i>
             </p>
+            <h3>Comments</h3>
+            <Comments postId={postData.post_id} />
           </div>
         </div>
         <div className="post-page-right-container">
@@ -87,6 +91,6 @@ export const SinglePostPage = (): JSX.Element => {
       </div>
     );
   } else {
-    return <h1 style={{ textAlign: "center" }}>Loading Full Post</h1>;
+    return <h1 className="loading-page-text">Loading Full Post</h1>;
   }
 };
