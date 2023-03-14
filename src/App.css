@@ -25,6 +25,7 @@ textarea {
 }
 
 button {
+  cursor: pointer;
   margin: 10px;
   background-color: inherit;
   border: solid 1px rgba(26, 183, 227, 0.663);

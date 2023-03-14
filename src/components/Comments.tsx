@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "../App";
 import { convertTimeStampToDate } from "../utils/convertTimeStampToDate";
 import "./Comments.css";
+import { CommentsInput } from "./CommentsInput";
 interface CommentsProps {
   postId: number;
 }
@@ -36,13 +37,16 @@ export const Comments = ({ postId }: CommentsProps): JSX.Element => {
                 <b className="comment-username">{comment.username}:</b>{" "}
                 {comment.comment}
               </p>
-              <p>{convertTimeStampToDate(comment.creation_date)}</p>
+              <p className="comment-date">
+                {convertTimeStampToDate(comment.creation_date)}
+              </p>
             </div>
           );
         })}
+        <CommentsInput />
       </div>
     );
   } else {
-    return <></>;
+    return <CommentsInput />;
   }
 };
