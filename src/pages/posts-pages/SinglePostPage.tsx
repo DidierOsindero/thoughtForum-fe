@@ -71,9 +71,9 @@ export const SinglePostPage = (): JSX.Element => {
             </p>
           </div>
         </div>
-        <div className="postPageRightContainer">
-          <div className="recommendedPostsContainer">
-            <p className="recommendedText">Recommended:</p>
+        <div className="post-page-right-container">
+          <div className="recommended-posts-container">
+            <p className="recommended-text">Recommended:</p>
             {recommendedPostData.length > 0 &&
               recommendedPostData.map((postData) => {
                 return (
@@ -87,6 +87,6 @@ export const SinglePostPage = (): JSX.Element => {
       </div>
     );
   } else {
-    return <h1>Loading Full Post</h1>;
+    return <h1 style={{ textAlign: "center" }}>Loading Full Post</h1>;
   }
 };

@@ -65,6 +65,7 @@ export const WritePage = (): JSX.Element => {
     e.preventDefault();
     const token = await user?.getIdToken();
     const config = { headers: { Authorization: "Bearer " + token } };
+    console.log(token);
 
     //===========Check if current user has a displayName otherwise assign username to null=======
     const username = user?.displayName ? user.displayName : null;
