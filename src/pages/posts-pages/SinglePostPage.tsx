@@ -71,9 +71,10 @@ export const SinglePostPage = (): JSX.Element => {
             <p className="postPagePostDate">
               <i>{convertTimeStampToDate(postData.creation_date)}</i>
             </p>
-            <h3>Comments</h3>
-            <Comments postId={postData.post_id} />
           </div>
+          <hr className="divider" />
+          <h3>Comments</h3>
+          <Comments postId={postData.post_id} />
         </div>
         <div className="post-page-right-container">
           <div className="recommended-posts-container">

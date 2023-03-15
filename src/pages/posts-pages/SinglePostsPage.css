@@ -1,3 +1,8 @@
 .loading-page-text {
   text-align: center;
 }
+
+.divider {
+  border: #cecece5f solid 0.7px;
+  width: 80%;
+}
