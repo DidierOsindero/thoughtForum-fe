@@ -20,6 +20,7 @@ export const ProfilePage = (): JSX.Element => {
   const getUserPostsData = useCallback(async () => {
     setIsLoading(true);
     const token = await user?.getIdToken();
+    console.log(token);
     const config = { headers: { Authorization: "Bearer " + token } };
     const { data } = await axios.get(BASE_URL + "posts/profile", config);
     setIsLoading(false);

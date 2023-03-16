@@ -8,7 +8,7 @@ import { User } from "firebase/auth";
 import { UserContext } from "../../context/UserContext";
 import { Comments } from "../../components/Comments";
 import "./SinglePostsPage.css";
-
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 export const SinglePostPage = (): JSX.Element => {
   const { id } = useParams();
   const { user } = useContext(UserContext) as {
@@ -60,6 +60,9 @@ export const SinglePostPage = (): JSX.Element => {
           <div className="postPagePostContainer">
             <img src={postData.img} alt="" className="postPageIMG" />
             <div className="postPagePostDetails">
+              {user && <AiOutlineHeart size={35} />}
+              {user && <AiFillHeart size={35} />}
+
               <p className="postPagePostUserName">
                 <i>{postData.username && postData.username}</i>
               </p>
