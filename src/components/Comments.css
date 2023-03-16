@@ -3,10 +3,10 @@
   margin-left: 20%;
   margin-right: 20%;
   text-align: left;
+  line-height: 160%;
 }
 
 .comment-username {
-  background-color: rgba(0, 128, 0, 0.639);
   color: rgb(251, 251, 251);
   padding: 3px;
   border-radius: 5px;

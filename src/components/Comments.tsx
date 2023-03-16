@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../App";
 import { UserContext } from "../context/UserContext";
+import { colourPicker } from "../utils/colourPicker";
 import { convertTimeStampToDate } from "../utils/convertTimeStampToDate";
 import "./Comments.css";
 import { CommentsInput } from "./CommentsInput";
@@ -85,7 +86,12 @@ export const Comments = ({ postId }: CommentsProps): JSX.Element => {
         return (
           <div className="ctn-comment" key={comment.comment_id}>
             <p>
-              <b className="comment-username">{comment.username}:</b>{" "}
+              <b
+                className="comment-username"
+                style={{ backgroundColor: colourPicker(comment.username) }}
+              >
+                {comment.username}:
+              </b>{" "}
               {comment.comment}
             </p>
             <p className="comment-date">
