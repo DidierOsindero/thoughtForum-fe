@@ -19,6 +19,7 @@ export const SinglePostPage = (): JSX.Element => {
   const [recommendedPostData, setRecommendedPostData] = useState<IPostData[]>(
     []
   );
+  const [isHearted, setIsHearted] = useState<boolean>(false);
 
   const getPostsAndRecommendedPostsData = useCallback(async () => {
     try {
@@ -26,6 +27,20 @@ export const SinglePostPage = (): JSX.Element => {
       const responseCurrentPost = await axios.get(BASE_URL + "posts/" + id);
       const currentPostData: IPostData = responseCurrentPost.data[0];
       setPostData(currentPostData);
+
+      //----------------------------------------------------------------------get user hearts data for current post
+      if (user) {
+        const token = await user?.getIdToken();
+        const config = { headers: { Authorization: "Bearer " + token } };
+        const responseUserHeart = await axios.get(
+          BASE_URL + "posts/" + id + "/hearts",
+          config
+        );
+
+        console.log("responseUserHeart", responseUserHeart.data);
+        if (responseUserHeart.data) setIsHearted(true);
+        else setIsHearted(false);
+      }
 
       //----------------------------------------------------------------------get post data for recommended posts
       let responseRecommendedPosts;
@@ -53,6 +68,38 @@ export const SinglePostPage = (): JSX.Element => {
     getPostsAndRecommendedPostsData();
   }, [getPostsAndRecommendedPostsData]);
 
+  const handleHearted = async () => {
+    if (user) {
+      const token = await user?.getIdToken();
+      const config = { headers: { Authorization: "Bearer " + token } };
+      await axios
+        .post(BASE_URL + "posts/" + id + "/hearts", null, config)
+        .then(() => {
+          setIsHearted(true);
+        })
+        .catch((error) => {
+          console.error("There was an error hearting the post:", error);
+        });
+    }
+  };
+
+  const handleUnHearted = async () => {
+    if (user) {
+      const token = await user?.getIdToken();
+      const config = { headers: { Authorization: "Bearer " + token } };
+      await axios
+        .delete(BASE_URL + "posts/" + id + "/hearts", config)
+        .then(() => {
+          setIsHearted(false);
+        })
+        .catch((error) => {
+          console.error("There was an error un-hearting the post:", error);
+        });
+    }
+  };
+
+  console.log(isHearted);
+
   if (postData) {
     return (
       <div className="postPageContainer">
@@ -60,8 +107,20 @@ export const SinglePostPage = (): JSX.Element => {
           <div className="postPagePostContainer">
             <img src={postData.img} alt="" className="postPageIMG" />
             <div className="postPagePostDetails">
-              {user && <AiOutlineHeart size={35} />}
-              {user && <AiFillHeart size={35} />}
+              {user && !isHearted && (
+                <AiOutlineHeart
+                  size={35}
+                  className="outlined-heart heart"
+                  onClick={handleHearted}
+                />
+              )}
+              {user && isHearted && (
+                <AiFillHeart
+                  size={35}
+                  className="filled-heart heart"
+                  onClick={handleUnHearted}
+                />
+              )}
 
               <p className="postPagePostUserName">
                 <i>{postData.username && postData.username}</i>
