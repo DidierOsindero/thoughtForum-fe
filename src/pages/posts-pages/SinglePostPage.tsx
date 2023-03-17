@@ -76,6 +76,13 @@ export const SinglePostPage = (): JSX.Element => {
         .post(BASE_URL + "posts/" + id + "/hearts", null, config)
         .then(() => {
           setIsHearted(true);
+
+          //Add 1 to currentPostData hearts (on client side rather than refreshing from DB)
+          const currentPostData = postData as IPostData;
+          setPostData({
+            ...currentPostData,
+            hearts: Number(currentPostData.hearts) + 1,
+          });
         })
         .catch((error) => {
           console.error("There was an error hearting the post:", error);
@@ -91,6 +98,13 @@ export const SinglePostPage = (): JSX.Element => {
         .delete(BASE_URL + "posts/" + id + "/hearts", config)
         .then(() => {
           setIsHearted(false);
+
+          //Remove 1 to currentPostData hearts (on client side rather than refreshing from DB)
+          const currentPostData = postData as IPostData;
+          setPostData({
+            ...currentPostData,
+            hearts: Number(currentPostData.hearts) - 1,
+          });
         })
         .catch((error) => {
           console.error("There was an error un-hearting the post:", error);
@@ -121,7 +135,18 @@ export const SinglePostPage = (): JSX.Element => {
                   onClick={handleUnHearted}
                 />
               )}
+              {!user && (
+                <>
+                  <AiFillHeart className="no-user-heart" />
+                </>
+              )}
 
+              <span
+                className={!user ? "hearts-count-no-user" : "hearts-count-user"}
+              >
+                {" "}
+                - {postData.hearts}
+              </span>
               <p className="postPagePostUserName">
                 <i>{postData.username && postData.username}</i>
               </p>

@@ -8,9 +8,20 @@
 }
 
 .heart {
+  position: relative;
+  top: 0.5rem;
   cursor: pointer;
   margin-top: 1rem;
   transition: 200ms;
+}
+
+.hearts-count-user {
+  font-size: 1.3rem;
+}
+
+.no-user-heart {
+  position: relative;
+  top: 0.15rem;
 }
 
 .heart:hover {
