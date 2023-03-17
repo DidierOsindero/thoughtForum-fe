@@ -37,7 +37,6 @@ export const SinglePostPage = (): JSX.Element => {
           config
         );
 
-        console.log("responseUserHeart", responseUserHeart.data);
         if (responseUserHeart.data) setIsHearted(true);
         else setIsHearted(false);
       }
@@ -111,8 +110,6 @@ export const SinglePostPage = (): JSX.Element => {
         });
     }
   };
-
-  console.log(isHearted);
 
   if (postData) {
     return (
