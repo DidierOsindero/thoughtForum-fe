@@ -1,0 +1,49 @@
+.ctn-comment {
+  width: 70%;
+  margin-left: 20%;
+  margin-right: 20%;
+  text-align: left;
+  line-height: 160%;
+}
+
+.comment-username {
+  color: rgb(251, 251, 251);
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  font-style: italic;
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.195);
+  padding-bottom: 0.5rem;
+}
+
+.comment-input {
+  width: 45%;
+  height: 4rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(128, 128, 128, 0.424);
+  padding: 0.3rem;
+}
+
+.comment-input-and-button {
+  position: relative;
+  margin: 1rem;
+}
+
+.comment-input:focus {
+  outline: none;
+}
+
+.upload-comment-btn,
+.upload-comment-btn:hover {
+  background-color: rgb(76, 179, 8);
+  border-radius: 20%;
+  border: none;
+  color: white;
+  position: absolute;
+  z-index: 1;
+  right: 25%;
+  bottom: -20%;
+}

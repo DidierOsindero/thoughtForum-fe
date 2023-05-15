@@ -6,7 +6,9 @@ import { convertTimeStampToDate } from "../../utils/convertTimeStampToDate";
 import { RecommendedPost } from "../../components/RecommendedPost";
 import { User } from "firebase/auth";
 import { UserContext } from "../../context/UserContext";
-
+import { Comments } from "../../components/Comments";
+import "./SinglePostsPage.css";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 export const SinglePostPage = (): JSX.Element => {
   const { id } = useParams();
   const { user } = useContext(UserContext) as {
@@ -17,6 +19,7 @@ export const SinglePostPage = (): JSX.Element => {
   const [recommendedPostData, setRecommendedPostData] = useState<IPostData[]>(
     []
   );
+  const [isHearted, setIsHearted] = useState<boolean>(false);
 
   const getPostsAndRecommendedPostsData = useCallback(async () => {
     try {
@@ -24,6 +27,19 @@ export const SinglePostPage = (): JSX.Element => {
       const responseCurrentPost = await axios.get(BASE_URL + "posts/" + id);
       const currentPostData: IPostData = responseCurrentPost.data[0];
       setPostData(currentPostData);
+
+      //----------------------------------------------------------------------get user hearts data for current post
+      if (user) {
+        const token = await user?.getIdToken();
+        const config = { headers: { Authorization: "Bearer " + token } };
+        const responseUserHeart = await axios.get(
+          BASE_URL + "posts/" + id + "/hearts",
+          config
+        );
+
+        if (responseUserHeart.data) setIsHearted(true);
+        else setIsHearted(false);
+      }
 
       //----------------------------------------------------------------------get post data for recommended posts
       let responseRecommendedPosts;
@@ -51,6 +67,50 @@ export const SinglePostPage = (): JSX.Element => {
     getPostsAndRecommendedPostsData();
   }, [getPostsAndRecommendedPostsData]);
 
+  const handleHearted = async () => {
+    if (user) {
+      const token = await user?.getIdToken();
+      const config = { headers: { Authorization: "Bearer " + token } };
+      await axios
+        .post(BASE_URL + "posts/" + id + "/hearts", null, config)
+        .then(() => {
+          setIsHearted(true);
+
+          //Add 1 to currentPostData hearts (on client side rather than refreshing from DB)
+          const currentPostData = postData as IPostData;
+          setPostData({
+            ...currentPostData,
+            hearts: Number(currentPostData.hearts) + 1,
+          });
+        })
+        .catch((error) => {
+          console.error("There was an error hearting the post:", error);
+        });
+    }
+  };
+
+  const handleUnHearted = async () => {
+    if (user) {
+      const token = await user?.getIdToken();
+      const config = { headers: { Authorization: "Bearer " + token } };
+      await axios
+        .delete(BASE_URL + "posts/" + id + "/hearts", config)
+        .then(() => {
+          setIsHearted(false);
+
+          //Remove 1 to currentPostData hearts (on client side rather than refreshing from DB)
+          const currentPostData = postData as IPostData;
+          setPostData({
+            ...currentPostData,
+            hearts: Number(currentPostData.hearts) - 1,
+          });
+        })
+        .catch((error) => {
+          console.error("There was an error un-hearting the post:", error);
+        });
+    }
+  };
+
   if (postData) {
     return (
       <div className="postPageContainer">
@@ -58,6 +118,32 @@ export const SinglePostPage = (): JSX.Element => {
           <div className="postPagePostContainer">
             <img src={postData.img} alt="" className="postPageIMG" />
             <div className="postPagePostDetails">
+              {user && !isHearted && (
+                <AiOutlineHeart
+                  size={35}
+                  className="outlined-heart heart"
+                  onClick={handleHearted}
+                />
+              )}
+              {user && isHearted && (
+                <AiFillHeart
+                  size={35}
+                  className="filled-heart heart"
+                  onClick={handleUnHearted}
+                />
+              )}
+              {!user && (
+                <>
+                  <AiFillHeart className="no-user-heart" />
+                </>
+              )}
+
+              <span
+                className={!user ? "hearts-count-no-user" : "hearts-count-user"}
+              >
+                {" "}
+                - {postData.hearts}
+              </span>
               <p className="postPagePostUserName">
                 <i>{postData.username && postData.username}</i>
               </p>
@@ -70,10 +156,13 @@ export const SinglePostPage = (): JSX.Element => {
               <i>{convertTimeStampToDate(postData.creation_date)}</i>
             </p>
           </div>
+          <hr className="divider" />
+          <h3>Comments</h3>
+          <Comments postId={postData.post_id} />
         </div>
-        <div className="postPageRightContainer">
-          <div className="recommendedPostsContainer">
-            <p className="recommendedText">Recommended:</p>
+        <div className="post-page-right-container">
+          <div className="recommended-posts-container">
+            <p className="recommended-text">Recommended:</p>
             {recommendedPostData.length > 0 &&
               recommendedPostData.map((postData) => {
                 return (
@@ -87,6 +176,11 @@ export const SinglePostPage = (): JSX.Element => {
       </div>
     );
   } else {
-    return <h1>Loading Full Post</h1>;
+    return (
+      <>
+        {" "}
+        <h1 className="loading-page-text">Loading Full Post</h1>
+      </>
+    );
   }
 };

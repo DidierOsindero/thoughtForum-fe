@@ -25,6 +25,7 @@ textarea {
 }
 
 button {
+  cursor: pointer;
   margin: 10px;
   background-color: inherit;
   border: solid 1px rgba(26, 183, 227, 0.663);
@@ -370,7 +371,7 @@ POST===============
   border-right: solid 1px rgba(128, 128, 128, 0.226);
 }
 
-.postPageRightContainer {
+.post-page-right-container {
   width: 30%;
   text-align: center;
 }
@@ -401,7 +402,7 @@ POST===============
 ================RECOMMENDED POST =============
 */
 
-.recommendedText {
+.recommended-text {
   font-size: 2rem;
   font-weight: 700;
 }
